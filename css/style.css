@@ -4,10 +4,10 @@ body {
 header {
   background-color: #F4F5FA;
   color: #50667B;
-  height: 80px;
+  height: auto;
   width: 100vw;
 }
-.wraper {
+header .wraper {
   max-width: 1500px;
   height: 80px;
   margin: 0 auto;
@@ -15,28 +15,73 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.wraper .logo {
-  padding: 0 1rem;
-}
-@media (max-width: 1000px) {
-  .wraper .logo {
-    padding: 0;
+@media screen and (max-width: 1024px) {
+  header .wraper {
+    flex-direction: column-reverse;
+    margin-bottom: 5.5rem;
   }
 }
-.wraper .logo img {
-  width: 10rem;
-}
-@media (max-width: 1000px) {
-  .wraper .logo img {
-    width: 0;
-  }
-}
-.header_nav,
-.header_form {
+header .wraper .header_nav {
   display: flex;
   align-items: center;
 }
-.log_btn {
+@media screen and (max-width: 1024px) {
+  header .wraper .header_nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+header .wraper .header_nav .logo {
+  padding: 0 1rem;
+}
+@media screen and (max-width: 1024px) {
+  header .wraper .header_nav .logo {
+    display: none;
+  }
+}
+header .wraper .header_nav .logo img {
+  width: 10rem;
+}
+header .wraper .header_nav .header_list {
+  font-weight: 500;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+header .wraper .header_nav .header_list .list_item {
+  white-space: pre;
+  margin: 0 0.5rem;
+}
+header .wraper .header_nav .header_list .list_item a {
+  transition: border-bottom 0.5s;
+}
+header .wraper .header_nav .header_list .list_item a:link,
+header .wraper .header_nav .header_list .list_item a:visited {
+  color: #50667B;
+}
+header .wraper .header_nav .header_list .list_item a:hover,
+header .wraper .header_nav .header_list .list_item a:focus {
+  border-bottom: 2px solid #46596c;
+  color: #46596c;
+  transition: border-bottom, color 0.5s;
+}
+header .wraper .header_form {
+  display: flex;
+  align-items: center;
+}
+header .wraper .header_form .logo_hiden {
+  width: 10rem;
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  header .wraper .header_form .logo_hiden {
+    display: inline;
+  }
+}
+header .wraper .header_form .logo_hiden img {
+  width: 10rem;
+}
+header .wraper .header_form .log_btn {
   color: #F44F2B;
   background-color: white;
   border: none;
@@ -48,100 +93,91 @@ header {
   margin-right: 0.5rem;
   padding: 0;
 }
-.log_btn:hover {
+header .wraper .header_form .log_btn:hover {
   background-color: #e2e5f2 !important;
 }
-.header_list {
-  font-weight: 500;
-  font-size: 1.5em;
-  display: flex;
-  align-items: center;
-}
-.header_list .list_item {
-  white-space: pre;
-  margin: 0 0.5rem;
-}
-.header_list a:link,
-.header_list a:visited {
-  color: #50667B;
-}
-.header_list a {
-  transition: border-bottom 0.5s;
-}
-.header_list a:hover,
-.header_list a:focus {
-  border-bottom: 2px solid #46596c;
-  color: #46596c;
-  transition: border-bottom, color 0.5s;
-}
-/*оставь надежду всяк сюда входящий*/
-/*обнуляем все что только можно*/
+/*оставь надежду всяк сюда входящий
+
+//обнуляем все что только можно
 form.gsc-search-box * {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-  box-sizing: content-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: content-box;
 }
+
 .gsc-input-box {
-  padding: 0 !important;
-  border: 1px solid #e2e5f2 !important;
+    padding: 0 !important;
+    border: 1px solid darken(@light_blue, 5%) !important;
 }
+
 div.gsc-control-cse,
 form.gsc-search-box,
 table.gsc-search-box {
-  position: relative;
+    position: relative;
 }
-/*добавим надпись на инпуте о том, что это поиск*/
+
+//добавим надпись на инпуте о том, что это поиск
 .gsc-input-box::before {
-  content: 'Поиск...';
-  color: #8399ae;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 1.5em;
+    content: 'Поиск...';
+    color: lighten(@dark_blue, 20%);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5em;
+    @media screen and (max-width:@widh_media) {
+        content:'';
+    }
 }
-/*стили для поля запроса*/
-td.gsc-input > .gsc-input-box input {
-  position: relative;
-  background: transparent !important;
-  color: #50667B;
-  font-size: 1.5em;
-  min-height: 38px;
-  width: 97% !important;
+
+//стили для поля запроса
+td.gsc-input>.gsc-input-box input {
+    position: relative;
+    background: transparent !important;
+    color: @dark_blue;
+    font-size: 1.5em;
+    min-height: 38px;
+    width: 97% !important;
 }
-td.gsc-input:hover > .gsc-input-box input {
-  color: #50667B;
-  margin-left: 0;
+
+td.gsc-input:hover>.gsc-input-box input {
+    color: @dark_blue;
+    margin-left: 0;
 }
-/*инпут в фокусе при введении запроса*/
-td.gsc-input > .gsc-input-box input:focus {
-  background-color: white !important;
-  color: #50667B;
-  width: 98%;
-  margin-left: 0;
+
+//инпут в фокусе при введении запроса
+td.gsc-input>.gsc-input-box input:focus {
+    background-color: white !important;
+    color: @dark_blue;
+    width: 98%;
+    margin-left: 0;
 }
-/*кнопка с лупой для отправки запроса*/
-td.gsc-search-button > .gsc-search-button-v2,
-td.gsc-search-button > .gsc-search-button-v2:focus {
-  background-color: white !important;
-  display: block;
-  background-position: 50% 50%;
-  padding: 0 !important;
-  height: 38px;
-  min-width: 38px;
-  width: 38px;
-  border-radius: 3px;
+
+//кнопка с лупой для отправки запроса
+td.gsc-search-button>.gsc-search-button-v2,
+td.gsc-search-button>.gsc-search-button-v2:focus {
+    background-color: white !important;
+    display: block;
+    background-position: 50% 50%;
+    padding: 0 !important;
+    height: 38px;
+    min-width: 38px;
+    width: 38px;
+    border-radius: 3px;
 }
-td.gsc-search-button > .gsc-search-button-v2:hover {
-  background-color: #e2e5f2 !important;
+
+td.gsc-search-button>.gsc-search-button-v2:hover {
+    background-color: darken(@light_blue, 5%) !important;
 }
-.gsc-search-button-v2 > svg {
-  transform: scale(1.2);
+
+.gsc-search-button-v2>svg {
+    transform: scale(1.2);
 }
-/*скрываем все лишнее*/
+
+//скрываем все лишнее
 .gsc-branding,
 .gcsc-branding,
 td.gsib_b {
-  display: none;
-}
+    display: none;
+}*/

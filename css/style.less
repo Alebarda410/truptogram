@@ -1,6 +1,7 @@
 @dark_blue: #50667B;
 @light_blue: #F4F5FA;
 @red: #F44F2B;
+@widh_media: 1024px;
 
 body {
     font-family: Roboto;
@@ -9,88 +10,112 @@ body {
 header {
     background-color: @light_blue;
     color: @dark_blue;
-    height: 80px;
+    height: auto;
     width: 100vw;
-}
 
-.wraper {
-    max-width: 1500px;
-    height: 80px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    & .wraper {
+        max-width: 1500px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-    & .logo {
-        padding: 0 1rem;
-
-        @media(max-width: 1000px) {
-            padding: 0;
-        }
-    }
-
-    & .logo img {
-        @media(max-width: 1000px) {
-            width: 0;
+        @media screen and (max-width:@widh_media) {
+            flex-direction: column-reverse;
+            margin-bottom: 5.5rem;
         }
 
-        width: 10rem;
+        & .header_nav {
+            display: flex;
+            align-items: center;
+
+            @media screen and (max-width:@widh_media) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            & .logo {
+                padding: 0 1rem;
+
+                @media screen and (max-width:@widh_media) {
+                    display: none;
+                }
+
+                & img {
+                    width: 10rem;
+                }
+            }
+
+            & .header_list {
+                font-weight: 500;
+                font-size: 1.5em;
+                display: flex;
+                align-items: center;
+
+                & .list_item {
+                    white-space: pre;
+                    margin: 0 .5rem;
+
+                    & a {
+                        transition: border-bottom .5s;
+                    }
+
+                    & a:link,
+                    & a:visited {
+                        color: @dark_blue;
+                    }
+
+                    & a:hover,
+                    & a:focus {
+                        border-bottom: 2px solid darken(@dark_blue, 5%);
+                        color: darken(@dark_blue, 5%);
+                        transition: border-bottom, color .5s;
+                    }
+                }
+            }
+        }
+
+        & .header_form {
+            display: flex;
+            align-items: center;
+
+            & .logo_hiden {
+                width: 10rem;
+                display: none;
+
+                @media screen and (max-width:@widh_media) {
+                    display: inline;
+                }
+
+                & img {
+                    width: 10rem;
+                }
+            }
+
+            & .log_btn {
+                color: @red;
+                background-color: white;
+                border: none;
+                width: 90px;
+                height: 38px;
+                font-weight: normal;
+                font-size: 1.2em;
+                border-radius: 3px;
+                margin-right: .5rem;
+                padding: 0;
+            }
+
+            & .log_btn:hover {
+                background-color: darken(@light_blue, 5%) !important;
+            }
+        }
     }
 }
 
-.header_nav,
-.header_form {
-    display: flex;
-    align-items: center;
-}
+/*оставь надежду всяк сюда входящий
 
-.log_btn {
-    color: @red;
-    background-color: white;
-    border: none;
-    width: 90px;
-    height: 38px;
-    font-weight: normal;
-    font-size: 1.2em;
-    border-radius: 3px;
-    margin-right: .5rem;
-    padding: 0;
-}
-.log_btn:hover{
-    background-color: darken(@light_blue, 5%) !important;
-}
-
-.header_list {
-
-    font-weight: 500;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-
-    & .list_item {
-        white-space: pre;
-        margin: 0 .5rem;
-    }
-
-    & a:link,
-    & a:visited {
-        color: @dark_blue;
-    }
-
-    & a {
-        transition: border-bottom .5s;
-    }
-
-    & a:hover,
-    & a:focus {
-        border-bottom: 2px solid darken(@dark_blue, 5%);
-        color: darken(@dark_blue, 5%);
-        transition: border-bottom, color .5s;
-    }
-}
-/*оставь надежду всяк сюда входящий*/
-
-/*обнуляем все что только можно*/
+//обнуляем все что только можно
 form.gsc-search-box * {
     border: 0;
     padding: 0;
@@ -110,17 +135,20 @@ table.gsc-search-box {
     position: relative;
 }
 
-/*добавим надпись на инпуте о том, что это поиск*/
+//добавим надпись на инпуте о том, что это поиск
 .gsc-input-box::before {
     content: 'Поиск...';
-    color: lighten(@dark_blue,20%);
+    color: lighten(@dark_blue, 20%);
     position: absolute;
     top: 10px;
     left: 10px;
     font-size: 1.5em;
+    @media screen and (max-width:@widh_media) {
+        content:'';
+    }
 }
 
-/*стили для поля запроса*/
+//стили для поля запроса
 td.gsc-input>.gsc-input-box input {
     position: relative;
     background: transparent !important;
@@ -135,7 +163,7 @@ td.gsc-input:hover>.gsc-input-box input {
     margin-left: 0;
 }
 
-/*инпут в фокусе при введении запроса*/
+//инпут в фокусе при введении запроса
 td.gsc-input>.gsc-input-box input:focus {
     background-color: white !important;
     color: @dark_blue;
@@ -143,7 +171,7 @@ td.gsc-input>.gsc-input-box input:focus {
     margin-left: 0;
 }
 
-/*кнопка с лупой для отправки запроса*/
+//кнопка с лупой для отправки запроса
 td.gsc-search-button>.gsc-search-button-v2,
 td.gsc-search-button>.gsc-search-button-v2:focus {
     background-color: white !important;
@@ -164,9 +192,9 @@ td.gsc-search-button>.gsc-search-button-v2:hover {
     transform: scale(1.2);
 }
 
-/*скрываем все лишнее*/
+//скрываем все лишнее
 .gsc-branding,
 .gcsc-branding,
 td.gsib_b {
     display: none;
-}
+}*/

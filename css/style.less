@@ -1,9 +1,12 @@
 @dark_blue: #50667B;
 @light_blue: #F4F5FA;
+@footer_blue: #E1E6EB;
 @red: #F44F2B;
 @widh_media: 1024px;
 
 body {
+    width: 100%;
+    height: 100%;
     font-family: Roboto;
 }
 
@@ -11,7 +14,7 @@ header {
     background-color: @light_blue;
     color: @dark_blue;
     height: auto;
-    width: 100vw;
+    width: 100%;
 
     & .wraper {
         max-width: 1500px;
@@ -108,6 +111,43 @@ header {
 
             & .log_btn:hover {
                 background-color: darken(@light_blue, 5%);
+            }
+        }
+    }
+}
+
+footer {
+    background-color: @footer_blue;
+    color: @dark_blue;
+    height: 150px;
+    width: 100%;
+    font-size: 1.2em;
+
+    & .wraper {
+        max-width: 1500px;
+        height: 150px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media screen and (max-width:@widh_media) {
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        & .copyright,
+        & .social {
+            padding: .5rem .5rem;
+        }
+
+        & .contacts {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            p {
+                padding: .25rem .5rem;
             }
         }
     }

@@ -1,11 +1,13 @@
 body {
+  width: 100%;
+  height: 100%;
   font-family: Roboto;
 }
 header {
   background-color: #F4F5FA;
   color: #50667B;
   height: auto;
-  width: 100vw;
+  width: 100%;
 }
 header .wraper {
   max-width: 1500px;
@@ -94,7 +96,40 @@ header .wraper .header_form .log_btn {
   padding: 0;
 }
 header .wraper .header_form .log_btn:hover {
-  background-color: #e2e5f2 !important;
+  background-color: #e2e5f2;
+}
+footer {
+  background-color: #E1E6EB;
+  color: #50667B;
+  height: 150px;
+  width: 100%;
+  font-size: 1.2em;
+}
+footer .wraper {
+  max-width: 1500px;
+  height: 150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+  footer .wraper {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+footer .wraper .copyright,
+footer .wraper .social {
+  padding: 0.5rem 0.5rem;
+}
+footer .wraper .contacts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+footer .wraper .contacts p {
+  padding: 0.25rem 0.5rem;
 }
 /*оставь надежду всяк сюда входящий
 

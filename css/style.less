@@ -11,8 +11,8 @@
     align-items: center;
 }
 
-.colors {
-    background-color: @light_blue;
+.colors(@bgc) {
+    background-color: @bgc;
     color: @dark_blue;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 header {
-    .colors;
+    .colors(@light_blue);
     height: auto;
     width: 100%;
 }
@@ -129,7 +129,7 @@ header {
 }
 
 footer {
-    .colors;
+    .colors(@footer_blue);
     height: 150px;
     width: 100%;
     font-size: 1.2em;

@@ -2,10 +2,6 @@
   display: flex;
   align-items: center;
 }
-.colors {
-  background-color: #F4F5FA;
-  color: #50667B;
-}
 body {
   width: 100%;
   height: 100%;
@@ -107,7 +103,7 @@ header {
   background-color: #e2e5f2;
 }
 footer {
-  background-color: #F4F5FA;
+  background-color: #E1E6EB;
   color: #50667B;
   height: 150px;
   width: 100%;

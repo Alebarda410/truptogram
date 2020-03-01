@@ -1,3 +1,6 @@
+<?php 
+	require 'db.php';
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -31,7 +34,7 @@
                     <img src="img\logo.svg" alt="TRUprogram">
                 </a>
                 <div class="gcse-search"></div>
-                <a href="login.html.html"><input class="log_btn" type="button" value="Вход"></a>
+                <a href="login.php"><input class="log_btn" type="button" value="Вход"></a>
             </div>
     </header>
 

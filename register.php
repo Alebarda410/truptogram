@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -11,27 +11,26 @@
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
     <title>program</title>
 </head>
-
 <body>
-    <form action="" method="post">
+    <form action="links/signup.php" method="post">
         <label>ФИО</label>
-        <input type="text" name="full_name" placeholder="Введите свое полное имя">
+        <input type="text" name="full_name" placeholder="Введите полное имя">
         <label>Логин</label>
-        <input type="text" name="login" placeholder="Введите свой логин">
+        <input type="text" name="login" placeholder="Введите логин">
         <label>Почта</label>
-        <input type="email" name="email" placeholder="Введите адрес своей почты">
+        <input type="email" name="email" placeholder="Введите адрес почты">
         <label>Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <label>Подтверждение пароля</label>
-        <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
+        <input type="password" name="password_2" placeholder="Подтвердите пароль">
         <label>Кто вы?</label>
         <div class="radio_b">
-            <label><input type="radio" name="dolg" value="lek"> Лектор</label>
-            <label><input type="radio" name="dolg" value="sl"> Слушатель</label>
+            <label><input type="radio" name="rol" value="true"> Лектор</label>
+            <label><input type="radio" name="rol" value="false"> Слушатель</label>
         </div>
-        <button type="submit">Войти</button>
+        <button type="submit">Зарегистрироваться</button>
         <p>
-            Есть аккаунт? - <a href="login.html">авторизируйтесь</a>!
+            Есть аккаунт? - <a href="login.php">авторизируйтесь</a>!
         </p>
     </form>
 </body>

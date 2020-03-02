@@ -15,10 +15,8 @@
     <form action="links/signup.php" method="post">
         <label>ФИО</label>
         <input type="text" name="full_name" placeholder="Введите полное имя">
-        <label>Логин</label>
-        <input type="text" name="login" placeholder="Введите логин">
-        <label>Почта</label>
-        <input type="email" name="email" placeholder="Введите адрес почты">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Введите email">
         <label>Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <label>Подтверждение пароля</label>
@@ -28,6 +26,9 @@
             <label><input type="radio" name="rol" value="true"> Лектор</label>
             <label><input type="radio" name="rol" value="false"> Слушатель</label>
         </div>
+        <label>
+            Ну допустим тут капча
+        </label>
         <button type="submit">Зарегистрироваться</button>
         <p>
             Есть аккаунт? - <a href="login.php">авторизируйтесь</a>!

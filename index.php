@@ -1,6 +1,3 @@
-<?php 
-	require 'db.php';
-?>
 <!DOCTYPE html>
 <html lang="ru">
 

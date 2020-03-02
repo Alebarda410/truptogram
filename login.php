@@ -14,8 +14,8 @@
 
 <body>
     <form action="vendor/signin.php" method="post">
-        <label>Логин</label>
-        <input type="text" name="login" placeholder="Введите логин">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="Введите email">
         <label>Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <button type="submit">Войти</button>

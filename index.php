@@ -1,3 +1,4 @@
+<?php require "links/db_connect.php"; ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -30,8 +31,20 @@
                 <a class="logo_hiden" href="/">
                     <img src="img\logo.svg" alt="TRUprogram">
                 </a>
-                <div class="gcse-search"></div>
-                <a href="login.php"><input class="log_btn" type="button" value="Вход"></a>
+
+                <!--Проверка авторизации-->
+
+                <?php if (isset($_SESSION['logged_user'])) : ?>
+
+                    Ета ебала работает
+                    <a href="links/logout.php">Выйти</a>
+
+                <?php else : ?>
+                    <a href="login.php"><input class="log_btn" type="button" value="Вход"></a>
+                <?php endif;  ?>
+
+                <!--Конец проверки авторизации-->
+
             </div>
     </header>
 
@@ -52,7 +65,6 @@
             </div>
         </div>
     </footer>
-    <script async src="https://cse.google.com/cse.js?cx=000980585392517790244:6qi01qalsqy"></script>
 </body>
 
 </html>

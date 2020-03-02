@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <form action="vendor/signin.php" method="post">
-        <label>Email</label>
+    <form action="links/signin.php" method="post">
+        <label>Ваш Email</label>
         <input type="text" name="email" placeholder="Введите email">
-        <label>Пароль</label>
+        <label>Ваш Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <button type="submit">Войти</button>
         <p>

@@ -11,24 +11,22 @@
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
     <title>program</title>
 </head>
+
 <body>
     <form action="links/signup.php" method="post">
-        <label>ФИО</label>
+        <label>Полные ФИО</label>
         <input type="text" name="full_name" placeholder="Введите полное имя">
-        <label>Email</label>
+        <label>Ваш Email</label>
         <input type="email" name="email" placeholder="Введите email">
-        <label>Пароль</label>
+        <label>Ваш пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <label>Подтверждение пароля</label>
         <input type="password" name="password_2" placeholder="Подтвердите пароль">
         <label>Кто вы?</label>
         <div class="radio_b">
-            <label><input type="radio" name="rol" value="true"> Лектор</label>
-            <label><input type="radio" name="rol" value="false"> Слушатель</label>
+            <label><input type="radio" name="rol" value="1"> Лектор</label>
+            <label><input type="radio" name="rol" value="0"> Слушатель</label>
         </div>
-        <label>
-            Ну допустим тут капча
-        </label>
         <button type="submit">Зарегистрироваться</button>
         <p>
             Есть аккаунт? - <a href="login.php">авторизируйтесь</a>!

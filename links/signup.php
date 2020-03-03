@@ -1,26 +1,17 @@
 <?php
 require "db_connect.php";
 
-$errors = array();
-
-
 if ($_POST['password_2'] != $_POST['password']) {
-    $errors[] = 'Пароли не одинаковы !';
+    $_SESSION['errR'] = 'Пароли не одинаковы!';
+    header('Location: ../register.php');
 }
 
-// исключаем два одинаковых мейла
-if (R::count('users', "full_name = ?", array($_POST['full_name'])) > 0) {
-    $errors[] = 'Пользователь с таким Логином существует !';
+if (R::count('users', "email = ?", [$_POST['email']]) > 0) {
+    $_SESSION['errR'] = 'Пользователь с таким Email существует!';
+    header('Location: ../register.php');
 }
 
-if (R::count('users', "email = ?", array($_POST['email'])) > 0) {
-    $errors[] = 'Пользователь с таким Email существует !';
-}
-
-//здесь регистрируем
-if (empty($errors)) {
-    // все хорошо, регисирируем в Базе Данных
-
+if (!$_SESSION['errR']) {
     $user = R::dispense('users');
     $user->full_name = $_POST['full_name'];
     $user->email = $_POST['email'];
@@ -28,6 +19,4 @@ if (empty($errors)) {
     $user->rol = $_POST['rol'];
     R::store($user);
     header('Location: /');
-} else {
-    //приколхозить вывод ошибок
 }

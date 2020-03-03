@@ -42,17 +42,36 @@ input {
     border-bottom: 2px solid #e3e3e3;
     outline: none;
 }
-.radio_b{
+
+input:not(.radio_bb) {
+    box-shadow: inset 0 0 0 50px white !important;
+}
+
+input:valid {
+    border-bottom: 2px solid #9ACD32;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-bottom: 2px solid #B22222;
+}
+
+.radio_b {
     display: flex;
-    &>label{
+
+    &>label {
         padding: 5px;
     }
 }
+
 button {
     padding: 10px;
     background: @light_blue;
     border: unset;
+
     &:hover {
         background-color: darken(@light_blue, 5%);
     }
+}
+.msg:before{
+    color: @red;
 }

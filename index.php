@@ -34,9 +34,9 @@
 
                 <!--Проверка авторизации-->
 
-                <?php if (isset($_SESSION['logged_user'])) : ?>
+                <?php if ($_SESSION['logged_user']->email) : ?>
 
-                    Ета ебала работает
+                    <?php echo $_SESSION['logged_user']->email;?>
                     <a href="links/logout.php">Выйти</a>
 
                 <?php else : ?>

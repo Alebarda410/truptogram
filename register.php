@@ -15,17 +15,17 @@
 <body>
     <form action="links/signup.php" method="post">
         <label>Полные ФИО</label>
-        <input type="text" name="full_name" placeholder="Введите полное имя">
+        <input type="text" name="full_name" placeholder="Введите полное имя" required pattern="[А-Я][а-я]{1,20}\s[А-Я][а-я]{1,20}\s[А-Я][а-я]{1,20}">
         <label>Ваш Email</label>
-        <input type="email" name="email" placeholder="Введите email">
+        <input type="email" name="email" placeholder="Введите email" required>
         <label>Ваш пароль</label>
-        <input type="password" name="password" placeholder="Введите пароль">
+        <input type="password" name="password" placeholder="Введите пароль" required>
         <label>Подтверждение пароля</label>
-        <input type="password" name="password_2" placeholder="Подтвердите пароль">
+        <input type="password" name="password_2" placeholder="Подтвердите пароль" required>
         <label>Кто вы?</label>
         <div class="radio_b">
-            <label><input type="radio" name="rol" value="1"> Лектор</label>
-            <label><input type="radio" name="rol" value="0"> Слушатель</label>
+            <label><input type="radio" name="rol" value="1" required> Лектор</label>
+            <label><input type="radio" name="rol" value="0" required> Слушатель</label>
         </div>
         <button type="submit">Зарегистрироваться</button>
         <p>

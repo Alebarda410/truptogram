@@ -57,7 +57,7 @@ if ($_SESSION['logged_user']) {
         </p>
         <?php
         if ($_SESSION['errR']) {
-            echo '<div class="msg;">'.$_SESSION['errR'].'</div>';
+            echo '<b style="color:red;">'.$_SESSION['errR'].'</b>';
             $_SESSION['errR']='';
         }
         ?>

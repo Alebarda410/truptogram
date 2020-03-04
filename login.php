@@ -21,29 +21,30 @@ if ($_SESSION['logged_user']) {
 <body>
     <form action="links/signin.php" method="post">
         <label>Ваш Email</label>
-        <input maxlength="50" 
-            type="email"
-            name="email" 
-            placeholder="Введите email" 
-            required>
+        <input maxlength="50" type="email" name="email" placeholder="Введите email" required>
         <label>Ваш Пароль</label>
-        <input maxlength="50"
-            type="password"
-            name="password"
-            placeholder="Введите пароль"
-            required
-            readonly
-            onfocus="this.removeAttribute('readonly')">
+        <input maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
         <button type="submit">Войти</button>
         <p color>
             Нет аккаунта? - <a href="register.php">зарегистрируйтесь</a>!
         </p>
-        <?php
-        if ($_SESSION['errL']) {
-            echo '<b style="color:red;">'.$_SESSION['errL'].'</b>';
-            $_SESSION['errL']='';
-        }
-        ?>
+        <div class="msg"></div>
+        <script type="text/javascript" src="libs/jquery.js"></script>
+        <script type="text/javascript">
+            $('form').submit(function(event) {
+                event.preventDefault();
+                $.post('links/signin.php', $('form').serialize(),
+                    function(data) {
+                        if (data == '1') {
+                            document.location.href = "index.php";
+                        } else {
+                            $('.msg').html(data);
+                            $('form').css('padding-bottom', '33px');
+                        }
+                    }
+                );
+            });
+        </script>
     </form>
 </body>
 

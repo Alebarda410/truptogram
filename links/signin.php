@@ -4,12 +4,10 @@ $user = R::findOne('users', 'email = ?', [$_POST['email']]);
 if ($user) {
     if (password_verify($_POST['password'], $user->password)) {
         $_SESSION['logged_user'] = $user;
-        header('Location: /');
+        echo '1';
     } else {
-        $_SESSION['errL'] = 'Пароль введен неправильно!';
-        header('Location: ../login.php');
+        echo 'Пароль введен неправильно!';
     }
 } else {
-    $_SESSION['errL'] = 'Пользователь не найден!';
-    header('Location: ../login.php');
+    echo 'Email не зарегистрирован!';
 }

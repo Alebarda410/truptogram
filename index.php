@@ -31,20 +31,14 @@
                 <a class="logo_hiden" href="/">
                     <img src="img\logo.svg" alt="TRUprogram">
                 </a>
-
-                <!--Проверка авторизации-->
-
                 <?php if ($_SESSION['logged_user']->email) : ?>
 
-                    <?php echo $_SESSION['logged_user']->email;?>
+                    <?php echo $_SESSION['logged_user']->email; ?>
                     <a href="links/logout.php">Выйти</a>
 
                 <?php else : ?>
                     <a href="login.php"><input class="log_btn" type="button" value="Вход"></a>
                 <?php endif;  ?>
-
-                <!--Конец проверки авторизации-->
-
             </div>
     </header>
 
@@ -65,6 +59,7 @@
             </div>
         </div>
     </footer>
+    <script type="text/javascript" src="libs/jquery.js"></script>
 </body>
 
 </html>

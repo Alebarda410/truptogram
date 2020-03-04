@@ -21,31 +21,13 @@ if ($_SESSION['logged_user']) {
 <body>
     <form action="links/signup.php" method="post">
         <label>Полные ФИО </label>
-        <input maxlength="100"
-            type="text"
-            name="full_name"
-            placeholder="Введите полное имя"
-            required
-            pattern="[А-Я][а-я]{1,20}\s[А-Я][а-я]{1,20}\s[А-Я][а-я]{1,20}">
+        <input oninput="full_nameFun(this)" maxlength="100" type="text" name="full_name" placeholder="Введите полное имя" required>
         <label>Ваш Email</label>
-        <input maxlength="50"
-            type="email"
-            name="email"
-            placeholder="Введите email"
-            required>
+        <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите email" required>
         <label>Ваш пароль</label>
-        <input maxlength="50"
-            type="password"
-            name="password"
-            placeholder="Введите пароль"
-            required
-            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+        <input oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
         <label>Подтверждение пароля</label>
-        <input maxlength="50"
-            type="password"
-            name="password_2"
-            placeholder="Подтвердите пароль"
-            required>
+        <input oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
         <label>Кто вы?</label>
         <div class="radio_b">
             <label><input class="radio_bb" type="radio" name="rol" value="1" required> Лектор</label>
@@ -55,12 +37,24 @@ if ($_SESSION['logged_user']) {
         <p>
             Есть аккаунт? - <a href="login.php">авторизируйтесь</a>!
         </p>
-        <?php
-        if ($_SESSION['errR']) {
-            echo '<b style="color:red;">'.$_SESSION['errR'].'</b>';
-            $_SESSION['errR']='';
-        }
-        ?>
+        <div class="msg"></div>
+        <script type="text/javascript" src="libs/jquery.js"></script>
+        <script type="text/javascript" src="js/reg.js"></script>
+        <script type="text/javascript">
+            $('form').submit(function(event) {
+                event.preventDefault();
+                $.post('links/signup.php', $('form').serialize(),
+                    function(data) {
+                        if (data == '1') {
+                            document.location.href = "index.php";
+                        } else {
+                            $('.msg').html(data);
+                            $('form').css('padding-bottom', '33px');
+                        }
+                    }
+                );
+            });
+        </script>
     </form>
 </body>
 

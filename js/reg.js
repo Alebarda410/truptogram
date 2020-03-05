@@ -26,3 +26,11 @@ function emailFun(email) {
         email.style = 'border-bottom: 2px solid #B22222;';
     }
 }
+function full_nameFun(full_name) {
+    if (full_name.value.length > 0) {
+        full_name.style = 'border-bottom: 2px solid #9ACD32;';
+    }
+    else {
+        full_name.style = 'border-bottom: 2px solid #B22222;';
+    }
+}

@@ -8,6 +8,8 @@ if (R::count('users', "email = ?", [$_POST['email']]) > 0) {
     echo 'Юзай форму с JS падла!';
 } elseif ($_POST['password_2'] != $_POST['password']) {
     echo 'Юзай форму с JS падла!';
+} elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/', $_POST['password'])) {
+    echo 'Юзай форму с JS падла!';
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     echo 'Не корректный email!';
 } elseif (!preg_match('/[А-Я][а-я]{1,19}/', $_POST['name'])) {

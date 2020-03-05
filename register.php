@@ -22,7 +22,7 @@ if ($_SESSION['logged_user']) {
     <form action="links/signup.php" method="post">
        
         <label>Ваше имя</label>
-        <input oninput="full_nameFun(this)" maxlength="20" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input oninput="nameFun(this)" maxlength="20" type="text" name="name" placeholder="Введите ваше имя" required>
        
         <label>Ваш Email</label>
         <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите ваш email" required>

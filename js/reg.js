@@ -27,11 +27,11 @@ function emailFun(email) {
     }
 }
 var regExFname = /^[А-Я][а-я]+$/;
-function full_nameFun(full_name) {
-    if (full_name.value.search(regExFname) != -1) {
-        full_name.style = 'border-bottom: 2px solid #9ACD32;';
+function nameFun(name) {
+    if (name.value.search(regExFname) != -1) {
+        name.style = 'border-bottom: 2px solid #9ACD32;';
     }
     else {
-        full_name.style = 'border-bottom: 2px solid #B22222;';
+        name.style = 'border-bottom: 2px solid #B22222;';
     }
 }    

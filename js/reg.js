@@ -17,7 +17,7 @@ function acept_pas2Fun(password2) {
         password2.style = 'border-bottom: 2px solid #B22222;';
     }
 }
-var regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var regExEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]+)$/;
 function emailFun(email) {
     if (email.value.search(regExEmail) != -1) {
         email.style = 'border-bottom: 2px solid #9ACD32;';
@@ -26,11 +26,12 @@ function emailFun(email) {
         email.style = 'border-bottom: 2px solid #B22222;';
     }
 }
+var regExFname = /^[А-Я][а-я]+$/;
 function full_nameFun(full_name) {
-    if (full_name.value.length > 0) {
+    if (full_name.value.search(regExFname) != -1) {
         full_name.style = 'border-bottom: 2px solid #9ACD32;';
     }
     else {
         full_name.style = 'border-bottom: 2px solid #B22222;';
     }
-}
+}    

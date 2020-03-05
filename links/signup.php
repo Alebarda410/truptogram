@@ -1,20 +1,20 @@
 <?php
 require "db_connect.php";
-$fname_l = strlen($_POST['full_name']);
 $email_l = strlen($_POST['email']);
+$rol_l = strlen($_POST['rol']);
 if (R::count('users', "email = ?", [$_POST['email']]) > 0) {
     echo 'Такой Email уже зарегистроирован!';
-} elseif ($fname_l == 0 || $fname_l > 100 || $email_l > 50) {
+} elseif ($email_l > 50 || $rol_l != 1) {
     echo 'Юзай форму с JS падла!';
 } elseif ($_POST['password_2'] != $_POST['password']) {
     echo 'Юзай форму с JS падла!';
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    echo 'Юзай форму с JS падла!';
-} elseif (empty($_POST['rol'])){
+    echo 'Не корректный email!';
+} elseif (!preg_match('/[А-Я][а-я]{1,19}/', $_POST['name'])) {
     echo 'Юзай форму с JS падла!';
 } else {
     $user = R::dispense('users');
-    $user->full_name = $_POST['full_name'];
+    $user->name = $_POST['name'];
     $user->email = $_POST['email'];
     $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $user->rol = $_POST['rol'];

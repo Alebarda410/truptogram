@@ -26,7 +26,7 @@ function emailFun(email) {
         email.style = 'border-bottom: 2px solid #B22222;';
     }
 }
-var regExName = /^[А-Я][а-я]{1,19}$/;
+var regExName = /^[А-Я][а-я]{1,19}$/u;
 function nameFun(name) {
     if (name.value.search(regExName) != -1) {
         name.style = 'border-bottom: 2px solid #9ACD32;';

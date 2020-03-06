@@ -26,9 +26,9 @@ function emailFun(email) {
         email.style = 'border-bottom: 2px solid #B22222;';
     }
 }
-var regExFname = /^[А-Я][а-я]+$/;
+var regExName = /^[А-Я][а-я]{1,19}$/;
 function nameFun(name) {
-    if (name.value.search(regExFname) != -1) {
+    if (name.value.search(regExName) != -1) {
         name.style = 'border-bottom: 2px solid #9ACD32;';
     }
     else {

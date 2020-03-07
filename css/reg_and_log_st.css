@@ -50,3 +50,20 @@ button:hover {
 .msg {
   color: #F44F2B;
 }
+body > a > .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background-color: rgba(80, 102, 123, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body > a > .back > img {
+  width: 30px;
+}
+body > a > .back:hover {
+  background-color: rgba(80, 102, 123, 0.3);
+}

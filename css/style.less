@@ -42,7 +42,7 @@ header {
 
     @media screen and (max-width:@widh_media) {
         flex-direction: column-reverse;
-        
+
     }
 }
 
@@ -124,6 +124,31 @@ header {
 
         :hover {
             background-color: darken(@light_blue, 5%);
+        }
+    }
+
+    &>.lk_mini {
+        .flex_cont;
+        
+        &>.user {
+
+            &>a:link,
+            &>a:visited {
+                color: @red;
+            }
+
+            .flex_cont;
+            margin-right: 10px;
+            flex-direction: column;
+            align-items: flex-end;
+
+            &>.n {
+                font-size: 1.3em;
+            }
+            &>.v {
+                color: darken(@red,100%);
+                font-size: 0.9em;
+            }
         }
     }
 }

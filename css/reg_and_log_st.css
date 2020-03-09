@@ -61,9 +61,25 @@ body > a > .back {
   align-items: center;
   justify-content: center;
 }
-body > a > .back > img {
-  width: 30px;
+@media screen and (max-width: 500px) {
+  body > a > .back > #o {
+    display: none;
+  }
+}
+body > a > .back > #d {
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  body > a > .back > #d {
+    display: inline;
+  }
 }
 body > a > .back:hover {
   background-color: rgba(80, 102, 123, 0.3);
+  transition: 0.3s;
+}
+@media screen and (max-width: 500px) {
+  body > a > .back {
+    height: 50px;
+  }
 }

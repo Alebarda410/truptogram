@@ -12,7 +12,7 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     echo 'Юзай форму с JS падла3!';
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     echo 'Не корректный email!';
-} elseif (!preg_match('/^[А-Я][а-я]{1,19}$/u', $_POST['name'])) {
+} elseif (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
     echo 'Юзай форму с JS падла4!';
 } else {
     $user = R::dispense('users');

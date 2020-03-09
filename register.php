@@ -21,13 +21,14 @@ if ($_SESSION['logged_user']) {
 <body>
     <a href="/">
         <div class="back">
-            <img src="img\back.svg" alt="">
+        <img id="o" src="img\back.svg" alt="back" width="30px">
+        <img id="d" src="img\back_mini.svg" alt="back" width="40px">
         </div>
     </a>
     <form action="links/signup.php" method="post">
 
         <label>Ваше имя</label>
-        <input oninput="nameFun(this)" maxlength="20" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите ваше имя" required>
 
         <label>Ваш Email</label>
         <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите ваш email" required>

@@ -79,10 +79,22 @@ body>a>.back {
     display: flex;
     align-items: center;
     justify-content: center;
-    &>img{
-        width:30px;
+    &>#o{
+        @media screen and (max-width:500px) {
+            display: none;
+        }
+    }
+    &>#d{
+        display: none;
+        @media screen and (max-width:500px) {
+            display: inline;
+        }
     }
     &:hover{
         background-color: rgba(80, 102, 123, 0.3);
+        transition: 0.3s;
+    }
+    @media screen and (max-width:500px) {
+        height: 50px;
     }
 }

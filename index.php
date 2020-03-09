@@ -31,7 +31,7 @@
                 <a class="logo_hiden" href="/">
                     <img src="img\logo.svg" alt="TRUprogram">
                 </a>
-                <?php if ($_SESSION['logged_user']->email) : ?>
+                <?php if ($_SESSION['logged_user']) : ?>
                     <div class="lk_mini">
                         <div class="user">
                             <a class="n" href="profile.php"><?php echo $_SESSION['logged_user']->name; ?></a>

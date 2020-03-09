@@ -1,0 +1,62 @@
+//compress:true
+
+@dark_blue: #50667B;
+@light_blue: #F4F5FA;
+@footer_blue: #E1E6EB;
+@red: #F44F2B;
+@widh_media: 1024px;
+
+.flex_cont(@alig) {
+    display: flex;
+    align-items: @alig;
+}
+
+.wraper {
+    max-width: 1500px;
+    margin: 0 auto;
+    .flex_cont(flex-start);
+    justify-content: space-evenly;
+    @media screen and (max-width:@widh_media) {
+        flex-direction: column-reverse;
+        align-items: center;;
+    }
+}
+
+.edit_profile {
+    border: 4px @light_blue solid;
+    width: 700px;
+    margin: 80px 0;
+}
+
+form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+}
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+    box-shadow: inset 0 0 0 50px white !important;
+}
+button {
+    padding: 10px;
+    background: @light_blue;
+    border: unset;
+
+    &:hover {
+        background-color: darken(@light_blue, 5%);
+    }
+}
+.msg {
+    color: @red;
+}
+.next_courses {
+    border: 4px @light_blue solid;
+    width: 300px;
+    height: 500px;
+    margin: 80px 0;
+}

@@ -20,7 +20,8 @@ if ($_SESSION['logged_user']) {
 
 <body>
     <a href="/"><div class="back">
-        <img src="img\back.svg" alt="">
+        <img id="o" src="img\back.svg" alt="back" width="30px">
+        <img id="d" src="img\back_mini.svg" alt="back" width="40px">
     </div></a>
     <form action="links/signin.php" method="post">
 

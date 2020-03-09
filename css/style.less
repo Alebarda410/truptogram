@@ -96,7 +96,13 @@ header {
 
 .header_form {
     .flex_cont;
-    justify-content: space-between;
+
+
+    @media screen and (max-width:@widh_media) {
+        width: 400px;
+        justify-content: space-between;
+    }
+
     &>.logo_hiden {
         width: 10rem;
         display: none;
@@ -129,7 +135,7 @@ header {
 
     &>.lk_mini {
         .flex_cont;
-        
+
         &>.user {
 
             &>a:link,
@@ -145,8 +151,9 @@ header {
             &>.n {
                 font-size: 1.3em;
             }
+
             &>.v {
-                color: darken(@red,100%);
+                color: darken(@red, 100%);
                 font-size: 0.9em;
             }
         }

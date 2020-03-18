@@ -25,7 +25,7 @@ if ($_SESSION['logged_user']) {
         <img id="d" src="img\back_mini.svg" alt="back" width="40px">
         </div>
     </a>
-    <form action="links/signup.php" method="post">
+    <form>
 
         <label>Ваше имя</label>
         <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите ваше имя" required>

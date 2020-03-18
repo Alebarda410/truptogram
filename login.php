@@ -23,7 +23,7 @@ if ($_SESSION['logged_user']) {
         <img id="o" src="img\back.svg" alt="back" width="30px">
         <img id="d" src="img\back_mini.svg" alt="back" width="40px">
     </div></a>
-    <form action="links/signin.php" method="post">
+    <form>
 
         <label>Ваш Email</label>
         <input maxlength="50" type="email" name="email" placeholder="Введите email" required>

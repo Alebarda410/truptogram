@@ -20,35 +20,11 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
 </head>
 
 <body>
-    <header>
-        <div class="hed_wraper">
-            <nav class="header_nav">
-                <a class="logo" href="/">
-                    <img src="img\logo.svg" alt="TRUprogram">
-                </a>
-                <ul class="header_list">
-                    <li class="list_item"><a href="">Новости</a></li>
-                    <li class="list_item"><a href="">Курсы</a></li>
-                    <li class="list_item"><a href="">Контакты</a></li>
-                    <li class="list_item"><a href="">О нас</a></li>
-                </ul>
-            </nav>
-            <div class="header_form">
-                <a class="logo_hiden" href="/">
-                    <img src="img\logo.svg" alt="TRUprogram">
-                </a>
-                <div class="lk_mini">
-                    <div class="user">
-                        <a class="n" href="profile.php"><?php echo $_SESSION['logged_user']->name; ?></a>
-                        <a class="v" href="links/logout.php">Выйти</a>
-                    </div>
-                    <a href="profile.php"><img width="50px" src=<?php echo '"' . $_SESSION['logged_user']->avatar . '"'; ?> alt="avatar"></a>
-                </div>
 
-            </div>
-    </header>
+    <?php include "HEADER.php"; ?>
+
     <div class="wraper">
-        <div class="edit_profile">
+        <div class="cont">
             <form>
 
                 <label>Текущее имя: <?php echo $_SESSION['logged_user']->name; ?></label>
@@ -70,14 +46,13 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
                     var ff = -1;
                     $('.ch_ps').click(function() {
                         event.preventDefault();
-                        ff*=-1;
+                        ff *= -1;
                         $('#pas1').val('');
                         $('#pas2').val('');
                         $('.wrap_pas_change').toggle(200);
-                        if (ff==1) {
+                        if (ff == 1) {
                             $('#up_down').attr('src', 'img/up.svg');
-                        }
-                        else{
+                        } else {
                             $('#up_down').attr('src', 'img/down.svg');
                         }
                     });
@@ -85,10 +60,10 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
                 <div class="wrap_pas_change">
                     <div class="pas_change">
                         <label>Новый пароль</label>
-                        <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="password" placeholder="Введите новый пароль">
+                        <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль">
 
                         <label>Подтверждение нового пароля</label>
-                        <input id="pas2" oninput="acept_pas2Fun(this)" value="" maxlength="50" type="password" name="password_2" placeholder="Подтвердите новый пароль">
+                        <input id="pas2" oninput="acept_pas2Fun(this)" value="" maxlength="50" type="password" name="new_password_2" placeholder="Подтвердите новый пароль">
                     </div>
                 </div>
 
@@ -109,28 +84,14 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
                     });
                 </script>
             </form>
-        </div>
-        <div class="next_courses">
-            <p>Ближайшие курсы</p>
+
+            <div class="next_courses">
+                <p>Ближайшие курсы</p>
+            </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="foot_wraper">
-            <div class="copyright">© TRUprogram 2020</div>
-            <div class="social">
-                <a href=""><img width="25rep" src="img/facebook.svg" alt="facebook"></a>
-                <a href=""><img width="25rep" src="img/TRUtwitter.svg" alt="twitter"></a>
-                <a href=""><img width="25rep" src="img/VK.svg" alt="VK"></a>
-                <a href=""><img width="30rep" src="img/instagram.svg" alt="instagram"></a>
-                <a href=""><img width="25rep" src="img/ok.svg" alt="ok"></a>
-                <a href=""><img width="25rep" src="img/youtube.svg" alt="youtube"></a>
-            </div>
-            <div class="contacts">
-                <p>pochta@gmail.com</p>
-                <p>88005553535</p>
-            </div>
-        </div>
-    </footer>
+
+    <?php include "FOOTER.php"; ?>
 
 </body>
 

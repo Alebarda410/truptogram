@@ -1,5 +1,5 @@
 <?php
-require "db_connect.php";
+require 'db_connect.php';
 $email_l = strlen($_POST['email']);
 $pas_l = strlen($_POST['password']);
 if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
@@ -20,6 +20,26 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     $user->email = $_POST['email'];
     $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $user->rol = $_POST['rol'];
+    $user->token = md5($_POST['email'] . time());
     R::store($user);
+    //подтверждение почты
+    require '../libs/phpmailer/PHPMailer.php';
+    require '../libs/phpmailer/Exception.php';
+    require '../libs/phpmailer/SMTP.php';
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail->CharSet = 'utf-8';
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->Host = 'smtp.yandex.com';
+    $mail->Username = 'popa0101@yandex.ru';
+    $mail->Password = '15975300Goha228';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+    $mail->setFrom('popa0101@yandex.ru', 'Admin');
+    $mail->addAddress($_POST['email']);
+    $mail->isHTML(true);
+    $mail->Subject = 'Подтверждение регистрации на truprogram.space!';
+    $$mail->Body = 'Письмо';
+    $mail->send();
     echo '1';
 }

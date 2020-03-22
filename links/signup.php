@@ -15,31 +15,19 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
 } elseif (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
     echo 'Юзай форму с JS падла4!';
 } else {
+    $token = md5($_POST['email'] . time());
     $user = R::dispense('users');
     $user->name = $_POST['name'];
     $user->email = $_POST['email'];
     $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $user->rol = $_POST['rol'];
-    $user->token = md5($_POST['email'] . time());
+    $user->token = $token;
+    $_SESSION['logged_user'] = $user;
     R::store($user);
-    //подтверждение почты
-    require '../libs/phpmailer/PHPMailer.php';
-    require '../libs/phpmailer/Exception.php';
-    require '../libs/phpmailer/SMTP.php';
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->CharSet = 'utf-8';
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;
-    $mail->Host = 'smtp.beget.com';
-    $mail->Username = 'noreply@truprogram.space';
-    $mail->Password = '15975300Qq';
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port = 465;
-    $mail->setFrom('noreply@truprogram.space', 'Администрация');
-    $mail->addAddress($_POST['email']);
-    $mail->isHTML(true);echo '16';
-    $mail->Subject = 'Регистрация на truprogram.space';
-    $mail->Body = 'Письмо';
-    $mail->send();
+    $_SESSION['logged_user']->avatar ='upload\def_avatar.svg';
+    $body = 'https://truprogram.space/links/activation.php';
+    $body .= "?token=$token";
+    require 'email_check.php';
+    SendMail($_POST['email'],$body);
     echo '1';
 }

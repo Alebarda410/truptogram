@@ -60,6 +60,7 @@ if ($_SESSION['logged_user']) {
                 $.post('links/signup.php', $('form').serialize(),
                     function(data) {
                         if (data == '1') {
+                            alert('Пройдите по ссылке в письме на почте чтобы получить полный доступ!');
                             document.location.href = "index.php";
                         } else {
                             $('.msg').html(data);

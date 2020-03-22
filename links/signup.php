@@ -23,9 +23,9 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     $user->token = md5($_POST['email'] . time());
     R::store($user);
     //подтверждение почты
-    include  '../libs/phpmailer/PHPMailer.php';
-    include  '../libs/phpmailer/Exception.php';
-    include  '../libs/phpmailer/SMTP.php';
+    require '../libs/phpmailer/PHPMailer.php';
+    require '../libs/phpmailer/Exception.php';
+    require '../libs/phpmailer/SMTP.php';
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->CharSet = 'utf-8';
     $mail->isSMTP();

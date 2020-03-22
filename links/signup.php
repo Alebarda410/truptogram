@@ -23,23 +23,23 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     $user->token = md5($_POST['email'] . time());
     R::store($user);
     //подтверждение почты
-    require '../libs/phpmailer/PHPMailer.php';
-    require '../libs/phpmailer/Exception.php';
-    require '../libs/phpmailer/SMTP.php';
+    include  '../libs/phpmailer/PHPMailer.php';
+    include  '../libs/phpmailer/Exception.php';
+    include  '../libs/phpmailer/SMTP.php';
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->CharSet = 'utf-8';
     $mail->isSMTP();
     $mail->SMTPAuth = true;
-    $mail->Host = 'smtp.yandex.com';
-    $mail->Username = 'popa0101@yandex.ru';
-    $mail->Password = '15975300Goha228';
+    $mail->Host = 'smtp.beget.com';
+    $mail->Username = 'noreply@truprogram.space';
+    $mail->Password = '15975300Qq';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
-    $mail->setFrom('popa0101@yandex.ru', 'Admin');
+    $mail->setFrom('noreply@truprogram.space', 'Администрация');
     $mail->addAddress($_POST['email']);
-    $mail->isHTML(true);
-    $mail->Subject = 'Подтверждение регистрации на truprogram.space!';
-    $$mail->Body = 'Письмо';
+    $mail->isHTML(true);echo '16';
+    $mail->Subject = 'Регистрация на truprogram.space';
+    $mail->Body = 'Письмо';
     $mail->send();
     echo '1';
 }

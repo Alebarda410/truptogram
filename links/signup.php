@@ -24,10 +24,10 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     $user->token = $token;
     $_SESSION['logged_user'] = $user;
     R::store($user);
-    $_SESSION['logged_user']->avatar ='upload\def_avatar.svg';
+    $_SESSION['logged_user']->avatar = 'upload\def_avatar.svg';
     $body = 'https://truprogram.space/links/activation.php';
     $body .= "?token=$token";
     require 'email_check.php';
-    SendMail($_POST['email'],$body);
+    SendMail($_POST['email'], $body);
     echo '1';
 }

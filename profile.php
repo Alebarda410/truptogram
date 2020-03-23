@@ -34,7 +34,8 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
                 <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите новый email">
 
                 <label>Изменить аватар</label>
-                <input type="file" name="avatar">
+                <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
+                <input type="file" name="avatar" accept="image/*">
 
                 <label>Для подтверждения изменений введите текущий пароль</label>
                 <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль">
@@ -71,16 +72,23 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
 
                 <div class="msg"></div>
 
-                <script type="text/javascript" src="js/prof_edit.js"></script>
                 <script type="text/javascript">
                     $('form').submit(function(event) {
                         event.preventDefault();
-                        $.post('links/edit_user.php', $('form').serialize(),
-                            function(data) {
+                        var formNm = $('form')[0];
+                        var formData = new FormData(formNm);
+                        $.ajax({
+                            type: 'POST',
+                            url: 'links/edit_user.php',
+                            enctype: 'multipart/form-data',
+                            data: new FormData(this),
+                            processData: false,
+                            contentType: false,
+                            success: function(data) {
                                 $('.msg').html(data);
                                 $('form').css('padding-bottom', '33px');
                             }
-                        );
+                        });
                     });
                 </script>
             </form>
@@ -92,7 +100,7 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
     </div>
 
     <?php include "FOOTER.php"; ?>
-
+    <script type="text/javascript" src="js/prof_edit.js"></script>
 </body>
 
 </html>

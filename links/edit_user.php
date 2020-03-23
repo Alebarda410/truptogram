@@ -44,14 +44,17 @@ if (!password_verify($_POST['password'], $user->password)) {
     }
     if (!empty($_FILES)) {
         if ($_FILES['avatar']['size'] > 5 * 1024 * 1024) {
-            echo 'Файл слишком большой';
+            echo 'Файл слишком большой!';
         } else {
-            if (preg_match('/^image/', mime_content_type($_FILES['avatar']['type']))) {
+            $tmp_name = $_FILES['avatar']['tmp_name'];
+            if (preg_match('/^image/', mime_content_type($tmp_name))) {
                 $name = time() . $_FILES['avatar']['name'];
-                $tmp_name = $_FILES['avatar']['tmp_name'];
                 move_uploaded_file($tmp_name, '../upload/' . $name);
                 $user->avatar = '../upload/' . $name;
                 $gg = 1;
+            }
+            else{
+                echo 'Неверный тип файла!';
             }
         }
     }
@@ -59,6 +62,6 @@ if (!password_verify($_POST['password'], $user->password)) {
         R::store($user);
         echo 'Данные изменены!';
     } else {
-        echo 'Данные не менялись!';
+       echo 'Данные не менялись';
     }
 }

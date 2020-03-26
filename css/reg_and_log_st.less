@@ -1,4 +1,4 @@
-//compress:false
+//compress:true
 
 @dark_blue: #50667B;
 @light_blue: #F4F5FA;
@@ -79,22 +79,38 @@ body>a>.back {
     display: flex;
     align-items: center;
     justify-content: center;
-    &>#o{
+
+    &>#o {
         @media screen and (max-width:500px) {
             display: none;
         }
     }
-    &>#d{
+
+    &>#d {
         display: none;
+
         @media screen and (max-width:500px) {
             display: inline;
         }
     }
-    &:hover{
+
+    &:hover {
         background-color: rgba(80, 102, 123, 0.3);
         transition: 0.3s;
     }
+
     @media screen and (max-width:500px) {
         height: 50px;
     }
+}
+
+.tooltip {
+    position: fixed;
+    padding: 10px 20px;
+    border: 1px solid #b3c9ce;
+    border-radius: 4px;
+    color: #333;
+    font-size: 0.9em;
+    background: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
 }

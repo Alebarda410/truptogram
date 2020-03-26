@@ -9,11 +9,15 @@ if (!password_verify($_POST['password'], $user->password)) {
     echo 'Подтвердите пароль!';
 } else {
     if ($name_l > 0) {
-        if (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
-            echo 'Юзай форму с JS падла1!';
+        if ($_POST['name'] != $user->name) {
+            if (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
+                echo 'Юзай форму с JS падла1!';
+            } else {
+                $user->name = $_POST['name'];
+                $gg = 1;
+            }
         } else {
-            $user->name = $_POST['name'];
-            $gg = 1;
+            echo 'Вы ввели ваше старое имя';
         }
     }
     if ($email_l > 0) {
@@ -42,9 +46,10 @@ if (!password_verify($_POST['password'], $user->password)) {
             $gg = 1;
         }
     }
-    if (!empty($_FILES)) {
+
+    if ($_FILES['avatar']['name']) {
         if ($_FILES['avatar']['size'] > 5 * 1024 * 1024) {
-            echo 'Файл слишком большой!';
+            echo 'Файл должен быть меньше 5Мб!';
         } else {
             $tmp_name = $_FILES['avatar']['tmp_name'];
             if (preg_match('/^image/', mime_content_type($tmp_name))) {
@@ -52,8 +57,7 @@ if (!password_verify($_POST['password'], $user->password)) {
                 move_uploaded_file($tmp_name, '../upload/' . $name);
                 $user->avatar = '../upload/' . $name;
                 $gg = 1;
-            }
-            else{
+            } else {
                 echo 'Неверный тип файла!';
             }
         }
@@ -62,6 +66,6 @@ if (!password_verify($_POST['password'], $user->password)) {
         R::store($user);
         echo 'Данные изменены!';
     } else {
-       echo 'Данные не менялись';
+        echo 'Данные не менялись';
     }
 }

@@ -3,6 +3,7 @@ require "links/db_connect.php";
 if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
     header('Location: /');
 }
+$user = $_SESSION['logged_user'];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -27,41 +28,25 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
         <div class="cont">
             <form>
 
-                <label>Текущее имя: <?php echo $_SESSION['logged_user']->name; ?></label>
-                <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите новое имя">
+                <label>Текущее имя: <?php echo $user->name; ?></label>
+                <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите новое имя" pattern="^[А-Я][а-я]{1,11}$">
 
-                <label>Текущий Email: <?php echo $_SESSION['logged_user']->email; ?></label>
+                <label>Текущий Email: <?php echo $user->email; ?></label>
                 <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите новый email">
 
                 <label>Изменить аватар</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
                 <input type="file" name="avatar" accept="image/*">
 
-                <label>Для подтверждения изменений введите текущий пароль</label>
+                <label>Для изменения данных введите текущий пароль</label>
                 <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль">
 
                 <button class="ch_ps">Сменить пароль <img id="up_down" width="15px" src="img/down.svg" alt="" srcset=""></button>
 
-                <script type="text/javascript" src="libs/jquery.js"></script>
-                <script type="text/javascript">
-                    var ff = -1;
-                    $('.ch_ps').click(function() {
-                        event.preventDefault();
-                        ff *= -1;
-                        $('#pas1').val('');
-                        $('#pas2').val('');
-                        $('.wrap_pas_change').toggle(200);
-                        if (ff == 1) {
-                            $('#up_down').attr('src', 'img/up.svg');
-                        } else {
-                            $('#up_down').attr('src', 'img/down.svg');
-                        }
-                    });
-                </script>
                 <div class="wrap_pas_change">
                     <div class="pas_change">
                         <label>Новый пароль</label>
-                        <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль">
+                        <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}">
 
                         <label>Подтверждение нового пароля</label>
                         <input id="pas2" oninput="acept_pas2Fun(this)" value="" maxlength="50" type="password" name="new_password_2" placeholder="Подтвердите новый пароль">
@@ -71,26 +56,6 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
                 <button type="submit">Подтвердить изменения</button>
 
                 <div class="msg"></div>
-
-                <script type="text/javascript">
-                    $('form').submit(function(event) {
-                        event.preventDefault();
-                        var formNm = $('form')[0];
-                        var formData = new FormData(formNm);
-                        $.ajax({
-                            type: 'POST',
-                            url: 'links/edit_user.php',
-                            enctype: 'multipart/form-data',
-                            data: new FormData(this),
-                            processData: false,
-                            contentType: false,
-                            success: function(data) {
-                                $('.msg').html(data);
-                                $('form').css('padding-bottom', '33px');
-                            }
-                        });
-                    });
-                </script>
             </form>
 
             <div class="next_courses">
@@ -101,6 +66,39 @@ if (!$_SESSION['logged_user'] || $_SESSION['logged_user']->verification == 0) {
 
     <?php include "FOOTER.php"; ?>
     <script type="text/javascript" src="js/prof_edit.js"></script>
+    <script type="text/javascript" src="libs/jquery.js"></script>
+    <script type="text/javascript">
+        $('form').submit(function(event) {
+            event.preventDefault();
+            var formNm = $('form')[0];
+            var formData = new FormData(formNm);
+            $.ajax({
+                type: 'POST',
+                url: 'links/edit_user.php',
+                enctype: 'multipart/form-data',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $('.msg').html(data);
+                    $('form').css('padding-bottom', '33px');
+                }
+            });
+        });
+        var ff = -1;
+        $('.ch_ps').click(function() {
+            event.preventDefault();
+            ff *= -1;
+            $('#pas1').val('');
+            $('#pas2').val('');
+            $('.wrap_pas_change').toggle(200);
+            if (ff == 1) {
+                $('#up_down').attr('src', 'img/up.svg');
+            } else {
+                $('#up_down').attr('src', 'img/down.svg');
+            }
+        });
+    </script>
 </body>
 
 </html>

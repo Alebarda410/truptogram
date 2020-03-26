@@ -35,3 +35,22 @@ function nameFun(name) {
         name.style = 'border-bottom: 2px solid #B22222;';
     }
 }
+let tooltipElem;
+function tooltip(elem) {
+    tooltipElem = document.createElement('div');
+    tooltipElem.className = 'tooltip';
+    tooltipElem.innerHTML = elem.getAttribute('data-tooltip');
+    document.body.append(tooltipElem);
+    let coords = elem.getBoundingClientRect();
+    let top = coords.top + elem.offsetHeight + 2;
+    let left = coords.left;
+    tooltipElem.style.top = top + 'px';
+    tooltipElem.style.left = left + 'px';
+}
+
+function remove() {
+    if (tooltipElem) {
+        tooltipElem.remove();
+        tooltipElem = null;
+    }
+}

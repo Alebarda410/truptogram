@@ -28,16 +28,16 @@ if ($_SESSION['logged_user']) {
     <form>
 
         <label>Ваше имя</label>
-        <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Кирилицей с заглавной буквы" oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите ваше имя" required>
 
         <label>Ваш Email</label>
-        <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите ваш email" required>
+        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="example@service.com" oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите ваш email" required>
 
         <label>Ваш пароль</label>
-        <input oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
+        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- один спец символ<br>- одну цифру<br>и быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
 
         <label>Подтверждение пароля</label>
-        <input oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
+        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Пароли должны совпадать" oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
 
         <label>Кто вы?</label>
         <div class="radio_b">

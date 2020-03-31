@@ -26,7 +26,7 @@ function emailFun(email) {
         email.style = 'border-bottom: 2px solid #B22222;';
     }
 }
-var regExName = /^[А-Я][а-я]{1,11}$/u;
+let regExName = /^[А-Я][а-я]{1,11}$/u;
 function nameFun(name) {
     if (name.value.search(regExName) != -1) {
         name.style = 'border-bottom: 2px solid #9ACD32;';
@@ -35,17 +35,17 @@ function nameFun(name) {
         name.style = 'border-bottom: 2px solid #B22222;';
     }
 }
-let tooltipElem;
+var tooltipElem;
 function tooltip(elem) {
     tooltipElem = document.createElement('div');
     tooltipElem.className = 'tooltip';
     tooltipElem.innerHTML = elem.getAttribute('data-tooltip');
-    document.body.append(tooltipElem);
     let coords = elem.getBoundingClientRect();
-    let top = coords.top + elem.offsetHeight + 2;
+    let top = elem.offsetHeight + coords.top + 2 + pageYOffset;
     let left = coords.left;
     tooltipElem.style.top = top + 'px';
     tooltipElem.style.left = left + 'px';
+    document.body.append(tooltipElem);
 }
 
 function remove() {

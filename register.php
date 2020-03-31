@@ -21,23 +21,23 @@ if ($_SESSION['logged_user']) {
 <body>
     <a href="/">
         <div class="back">
-        <img id="o" src="img\back.svg" alt="back" width="30px">
-        <img id="d" src="img\back_mini.svg" alt="back" width="40px">
+            <img id="o" src="img\back.svg" alt="back" width="30px">
+            <img id="d" src="img\back_mini.svg" alt="back" width="40px">
         </div>
     </a>
     <form>
 
         <label>Ваше имя</label>
-        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Кирилицей с заглавной буквы" oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите ваше имя" required>
+        <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Например Иван" required>
 
         <label>Ваш Email</label>
-        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="example@service.com" oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите ваш email" required>
+        <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="example@mail.ru" required>
 
         <label>Ваш пароль</label>
-        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- один спец символ<br>- одну цифру<br>и быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
+        <input onblur="remove()" onfocus="tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- один спец символ<br>- одну цифру<br>быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
 
         <label>Подтверждение пароля</label>
-        <input onblur = "remove()" onfocus = "tooltip(this)" data-tooltip="Пароли должны совпадать" oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
+        <input oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
 
         <label>Кто вы?</label>
         <div class="radio_b">

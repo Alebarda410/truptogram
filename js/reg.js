@@ -3,9 +3,11 @@ var regExPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/;
 function acept_pasFun(password) {
     if (password.value.search(regExPass) != -1) {
         password.style = 'border-bottom: 2px solid #9ACD32;';
+        document.getElementsByClassName('tooltip')[0].hidden = true;
     }
     else {
         password.style = 'border-bottom: 2px solid #B22222;';
+        document.getElementsByClassName('tooltip')[0].hidden = false;
     }
     pas1 = password.value;
 }

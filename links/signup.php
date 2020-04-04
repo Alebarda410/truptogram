@@ -5,15 +5,15 @@ $pas_l = strlen($_POST['password']);
 if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     echo 'Такой Email уже зарегистроирован!';
 } elseif ($email_l > 50 || $pas_l > 50 || ($_POST['rol'] != '0' && $_POST['rol'] != '1')) {
-    echo 'Юзай форму с JS падла1!';
+    echo 'Юзай форму с JS падла!';
 } elseif ($_POST['password_2'] != $_POST['password']) {
-    echo 'Юзай форму с JS падла2!';
+    echo 'Пароли не совпадают!';
 } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/', $_POST['password'])) {
-    echo 'Юзай форму с JS падла3!';
+    echo 'Некорректный пароль!';
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    echo 'Не корректный email!';
+    echo 'Некорректный email!';
 } elseif (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
-    echo 'Юзай форму с JS падла4!';
+    echo 'Некорректное имя!';
 } else {
     $token = md5($_POST['email'] . time());
     $user = R::dispense('users');

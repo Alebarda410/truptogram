@@ -17,8 +17,7 @@
 
     <?php include "HEADER.php"; ?>
     <?php include "FOOTER.php"; ?>
-    
-    <script type="text/javascript" src="libs/jquery.js"></script>
+
 </body>
 
 </html>

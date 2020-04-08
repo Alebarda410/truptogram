@@ -13,7 +13,7 @@ function SendMail($email,$body)
     $mail->Password = '15975300Qq';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
-    $mail->setFrom('noreply@truprogram.space', 'noreply');
+    $mail->setFrom('noreply@truprogram.space', 'truprogram');
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = 'Регистрация на truprogram.space';

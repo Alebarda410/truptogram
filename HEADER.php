@@ -19,9 +19,13 @@
 
             <?php if ($_SESSION['logged_user']) : ?>
                 <div class="lk_mini">
-                    
+
                     <div class="user">
-                        <a class="n" href="profile.php"><?php echo $_SESSION['logged_user']->name; ?></a>
+
+                        <a class="n" href="profile.php">
+                            <?php echo $_SESSION['logged_user']->name; ?>
+                        </a>
+                        
                         <a class="v" href="links/logout.php">Выйти</a>
                     </div>
 

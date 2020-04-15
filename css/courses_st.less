@@ -1,0 +1,37 @@
+//compress:true
+
+@dark_blue: #50667B;
+@light_blue: #F4F5FA;
+@footer_blue: #E1E6EB;
+@red: #F44F2B;
+@widh_media: 1024px;
+
+.wraper {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.cours {
+    padding: 40px;
+    margin-top: 80px;
+    font-size: 1.2em;
+    border: 4px @light_blue solid;
+    display: flex;
+    align-items: space-between;
+}
+.text{
+    text-indent: 50px;
+    line-height: 150%;
+    text-align: justify;
+    &>a:link{
+        color: @red;
+    }
+}
+.description{
+    margin-left: 50px;
+}

@@ -17,6 +17,6 @@ function SendMail($email,$body)
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = 'Регистрация на truprogram.space';
-    $mail->Body = $body;
+    $mail->Body = 'Для подтверждения регистрации перейдите по ссылке: '.$body;
     $mail->send();
 }

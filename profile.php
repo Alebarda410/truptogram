@@ -23,7 +23,7 @@ $user = $_SESSION['logged_user'];
 <body>
 
     <?php include "HEADER.php"; ?>
-    
+
     <?php if ($_SESSION['logged_user']->verification == 0) : ?>
         <div class="text">
             Для разблокировки полного функционала подтвердите почту!
@@ -64,7 +64,14 @@ $user = $_SESSION['logged_user'];
                 </form>
 
                 <div class="next_courses">
-                    <p>Ближайшие курсы</p>
+                    <?php if ($user->rol == 1) : ?>
+                        <p>Вы лектор</p>
+                        <button>Новый курс</button>
+                        <p>Ближайшие курсы</p>
+                    <?php else : ?>
+                        <p>Вы слушатель</p>
+                        <p>Ближайшие курсы</p>
+                    <?php endif;  ?>
                 </div>
             </div>
         </div>

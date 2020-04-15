@@ -10,7 +10,7 @@
             <a href=""><img width="25rep" src="img/youtube.svg" alt="youtube"></a>
         </div>
         <div class="contacts">
-            <p>pochta@gmail.com</p>
+            <p>official@truprogram.space</p>
             <p>88005553535</p>
         </div>
     </div>

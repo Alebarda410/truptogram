@@ -5,5 +5,5 @@
     else{
         require '../libs/rb.php';
     }
-R::setup( 'mysql:host=donat4yq.beget.tech;dbname=donat4yq_truprog', 'donat4yq_truprog', '15975300Qq' );
+R::setup( 'mysql:host=donat4yq.beget.tech;dbname=donat4yq_truprog', 'donat4yq_truprog', 'F%aGNA2d' );
 session_start();

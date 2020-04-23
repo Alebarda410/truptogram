@@ -10,7 +10,7 @@ function SendMail($email,$body)
     $mail->SMTPAuth = true;
     $mail->Host = 'smtp.beget.com';
     $mail->Username = 'noreply@truprogram.space';
-    $mail->Password = '15975300Qq';
+    $mail->Password = 'b3*OKqQi';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
     $mail->setFrom('noreply@truprogram.space', 'truprogram');

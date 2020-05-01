@@ -18,7 +18,7 @@
 
     <?php include "HEADER.php"; ?>
 
-    
+    <?php echo $_SERVER['HTTP_REFERER']; ?>
     
     <?php include "FOOTER.php"; ?>
 

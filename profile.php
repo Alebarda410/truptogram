@@ -66,7 +66,7 @@ $user = $_SESSION['logged_user'];
                 <div class="next_courses">
                     <?php if ($user->rol == 1) : ?>
                         <p>Вы лектор</p>
-                        <button>Новый курс</button>
+                        <a href="add_cours.php"><button>Новый курс</button></a>
                         <p>Ближайшие курсы</p>
                     <?php else : ?>
                         <p>Вы слушатель</p>

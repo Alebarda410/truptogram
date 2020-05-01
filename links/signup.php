@@ -15,7 +15,7 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
 } elseif (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
     echo 'Некорректное имя!';
 } else {
-    $token = md5($_POST['email'] . time());
+    $token = md5($_POST['email'].time());
     $user = R::dispense('users');
     $user->name = $_POST['name'];
     $user->email = $_POST['email'];

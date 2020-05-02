@@ -22,16 +22,6 @@ $date = date('Y-m-d\TH:i');
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
     <title>program</title>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=b9a5170f-cf6d-46ee-8b6c-753687614944&lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        ymaps.ready(init);
-
-        function init() {
-            var myMap = new ymaps.Map("map", {
-                center: [55.76, 37.64],
-                zoom: 7
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -67,8 +57,8 @@ $date = date('Y-m-d\TH:i');
                     <label><input class="radio_bb" type="radio" name="pin" value="0" required> По адресу</label>
                 </div>
                 <div class="wrap_map">
-                    <label>Выберите место</label>
-                    <div id="map" style="width: 397.31px; height: 300px"></div>
+                    <label>Кликните по карте для выбора места</label>
+                    <div id="map"></div>
                 </div>
                 <div class="wrap_text">
                     <div class="cost_flex">
@@ -88,35 +78,7 @@ $date = date('Y-m-d\TH:i');
     </div>
     <script type="text/javascript" src="js/add_cours.js"></script>
     <script type="text/javascript" src="libs/jquery.js"></script>
-    <script type="text/javascript">
-        $('form').submit(function(event) {
-            event.preventDefault();
-            var formNm = $('form')[0];
-            var formData = new FormData(formNm);
-            $.ajax({
-                type: 'POST',
-                url: '',
-                enctype: 'multipart/form-data',
-                data: new FormData(this),
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    $('.msg').html(data);
-                    $('form').css('padding-bottom', '33px');
-                }
-            });
-        });
-
-        $('[value = 1]').click(function() {
-            $('.wrap_map').hide(100);
-            $('.wrap_text').show(100);
-        });
-
-        $('[value = 0]').click(function() {
-            $('.wrap_text').hide(100);
-            $('.wrap_map').show(100);
-        });
-    </script>
+    <script type="text/javascript" src="js/add_cours_map_api.js"></script>
     <?php include "FOOTER.php"; ?>
 
 </body>

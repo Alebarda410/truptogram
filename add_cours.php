@@ -50,7 +50,7 @@ $date = date('Y-m-d\TH:i');
 
                 <label>Логотип курса</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
-                <input type="file" name="logo" accept="image/*">
+                <input type="file" name="logo" accept="image/*" required>
 
                 <label>Дата и время курса</label>
                 <input min="<?php echo $date; ?>" type="datetime-local" name="date" required>
@@ -59,7 +59,7 @@ $date = date('Y-m-d\TH:i');
                 <input type="number" name="count_student" max="2147483647" placeholder="0 если неограниченно" required>
 
                 <label>Подробное описание курса</label>
-                <textarea maxlength="5000" placeholder="Максимум 5000 символов" form="tipo_id" name="overview" id="" cols="30" rows="10"></textarea>
+                <textarea required maxlength="5000" placeholder="Максимум 5000 символов" form="tipo_id" name="overview" id="" cols="30" rows="10"></textarea>
 
                 <label>Выберите способ и место проведение</label>
                 <div class="radio_b">
@@ -68,15 +68,17 @@ $date = date('Y-m-d\TH:i');
                 </div>
                 <div class="wrap_map">
                     <label>Выберите место</label>
-                    <div id="map" style="width: 400px; height: 300px"></div>
+                    <div id="map" style="width: 397.31px; height: 300px"></div>
                 </div>
                 <div class="wrap_text">
-                    <label>Ссылка на ваш сайт</label>
-                    <input maxlength="50" type="text" name="location" placeholder="Web адрес" required>
+                    <div class="cost_flex">
+                        <label>Ссылка на ваш сайт</label>
+                        <input maxlength="50" type="text" name="location" placeholder="Web адрес" required>
+                    </div>
                 </div>
 
                 <label>Для добавления курса введите текущий пароль</label>
-                <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль">
+                <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль" required>
 
                 <button type="submit">Добавить курс</button>
 
@@ -93,7 +95,7 @@ $date = date('Y-m-d\TH:i');
             var formData = new FormData(formNm);
             $.ajax({
                 type: 'POST',
-                url: 'links/edit_user.php',
+                url: '',
                 enctype: 'multipart/form-data',
                 data: new FormData(this),
                 processData: false,
@@ -105,14 +107,14 @@ $date = date('Y-m-d\TH:i');
             });
         });
 
-        $('[value = 1]').click(function() { 
-            $('.wrap_map').hide();
-            $('.wrap_text').show();
+        $('[value = 1]').click(function() {
+            $('.wrap_map').hide(100);
+            $('.wrap_text').show(100);
         });
 
         $('[value = 0]').click(function() {
-            $('.wrap_text').hide();
-            $('.wrap_map').show();
+            $('.wrap_text').hide(100);
+            $('.wrap_map').show(100);
         });
     </script>
     <?php include "FOOTER.php"; ?>

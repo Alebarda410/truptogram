@@ -1,5 +1,9 @@
 ymaps.ready(init);
 
+function rabotai_padla() {
+    document.getElementsByName('location')[0].value = coords;
+}
+
 function init() {
     var myPlacemark,
         myMap = new ymaps.Map('map', {
@@ -26,7 +30,7 @@ function init() {
                 getAddress(myPlacemark.geometry.getCoordinates());
             });
         }
-        document.getElementsByName('location')[0].value=coords;
+        document.getElementsByName('location')[0].value = coords;
         getAddress(coords);
     });
 
@@ -61,31 +65,30 @@ function init() {
         });
     }
 }
-$('form').submit(function(event) {
+$('form').submit(function (event) {
     event.preventDefault();
     var formNm = $('form')[0];
     var formData = new FormData(formNm);
     $.ajax({
         type: 'POST',
-        url: '',
+        url: 'links/added_cours.php',
         enctype: 'multipart/form-data',
         data: new FormData(this),
         processData: false,
         contentType: false,
-        success: function(data) {
+        success: function (data) {
             $('.msg').html(data);
             $('form').css('padding-bottom', '33px');
         }
     });
 });
-$('[value = 1]').click(function() {
+$('[value = 1]').click(function () {
     $('.wrap_map').hide(100);
     document.getElementsByName('location')[0].value = null;
     $('.wrap_text').show(100);
 });
 
-$('[value = 0]').click(function() {
+$('[value = 0]').click(function () {
     $('.wrap_text').hide(100);
-    document.getElementsByName('location')[0].value=coords;
     $('.wrap_map').show(100);
 });

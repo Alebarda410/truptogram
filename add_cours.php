@@ -54,7 +54,7 @@ $date = date('Y-m-d\TH:i');
                 <label>Выберите способ и место проведение</label>
                 <div class="radio_b">
                     <label><input class="radio_bb" type="radio" name="pin" value="1" required> Онлайн</label>
-                    <label><input class="radio_bb" type="radio" name="pin" value="0" required> По адресу</label>
+                    <label><input onclick="rabotai_padla()" class="radio_bb" type="radio" name="pin" value="0" required> По адресу</label>
                 </div>
                 <div class="wrap_map">
                     <label>Кликните по карте для выбора места</label>
@@ -76,9 +76,9 @@ $date = date('Y-m-d\TH:i');
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/add_cours.js"></script>
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="js/add_cours_map_api.js"></script>
+
     <?php include "FOOTER.php"; ?>
 
 </body>

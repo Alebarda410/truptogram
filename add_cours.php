@@ -26,6 +26,8 @@ $date = date('Y-m-d\TH:i');
 
 <body>
 
+    <!-- прикрутить справа предпросмотр общей страницы курса и самой страницы -->
+
     <?php include "HEADER.php"; ?>
 
     <div class="wraper">

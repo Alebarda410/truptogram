@@ -8,7 +8,7 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     echo 'Юзай форму с JS падла!';
 } elseif ($_POST['password_2'] != $_POST['password']) {
     echo 'Пароли не совпадают!';
-} elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/', $_POST['password'])) {
+} elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/', $_POST['password'])) {
     echo 'Некорректный пароль!';
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     echo 'Некорректный email!';

@@ -1,6 +1,6 @@
 <?php
 require "links/db_connect.php";
-$res = R::getAll("SELECT overview, topic, logo FROM `courses` ORDER BY `id` DESC LIMIT 10");
+$res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` DESC LIMIT 10");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -28,12 +28,12 @@ $res = R::getAll("SELECT overview, topic, logo FROM `courses` ORDER BY `id` DESC
                 <div class="cours">
                     <img width="150px" src="<?php echo $article['logo']; ?>" alt="logo">
                     <div class="description">
-                        <a href="cours.php" class="zag">
+                        <a href="<?php echo 'cours.php?id=' . $article['id']; ?>" class="zag">
                             <?php echo $article['topic']; ?>
                         </a>
                         <div class="text">
                             <?php echo $article['overview']; ?>
-                            <a href="cours.php">Подробнее...</a>
+                            <a href="<?php echo 'cours.php?id=' . $article['id']; ?>">Подробнее...</a>
                         </div>
                     </div>
                 </div>

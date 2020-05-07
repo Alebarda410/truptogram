@@ -1,5 +1,5 @@
 var pas1 = '0 0';
-var regExPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/;
+var regExPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/;
 function acept_pasFun(password) {
     if (password.value.search(regExPass) != -1) {
         password.style = 'border-bottom: 2px solid #9ACD32;';

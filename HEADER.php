@@ -5,7 +5,7 @@
                 <img src="img\logo.svg" alt="TRUprogram">
             </a>
             <ul class="header_list">
-                <li class="list_item"><a href="/">Новости</a></li>
+                <li class="list_item"><a href="/">Главная</a></li>
                 <li class="list_item"><a href="courses.php">Курсы</a></li>
                 <li class="list_item"><a href="">Контакты</a></li>
                 <li class="list_item"><a href="">О нас</a></li>

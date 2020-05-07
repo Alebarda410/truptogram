@@ -39,7 +39,7 @@ if (!password_verify($_POST['password'], $user->password)) {
             echo 'Юзай форму с JS падла4!';
         } elseif (password_verify($_POST['new_password'], $user->password)) {
             echo 'Новый и старый пароли совпадают!';
-        } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}/', $_POST['password'])) {
+        } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/', $_POST['password'])) {
             echo 'Юзай форму с JS падла5!';
         } else {
             $user->password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);

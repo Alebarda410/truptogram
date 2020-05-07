@@ -24,22 +24,31 @@ $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
     <?php include "HEADER.php"; ?>
 
     <div class="wraper">
-    <?php echo $cours->topic; ?><br><br>
-        <table>
-            <tr>
-                <td>Выступающий</td>
-                <td><?php echo $cours->speaker; ?><br></td>
-            </tr>
-            <tr>
-                <td>Число студентов</td>
-                <td><?php echo $cours->count_student; ?><br></td>
-            </tr>
-            <tr>
-                <td>Место проведения</td>
-                <td><?php echo $cours->location; ?><br></td>
-            </tr>
-        </table><br>
-        
+        <?php echo $cours->topic; ?>
+        <div class="ov">
+            <div class="logo_cr">
+                <img width="500px" src="<?php echo $cours->logo; ?>">
+            </div>
+            <div class="text_ov">
+                <div class="sp">
+                    <div class="sp1">Выступающий</div>
+                    <div class="sp2"><?php echo $cours->speaker; ?></div>
+                </div>
+
+                <div class="cs">
+                    <div class="cs1">Свободные места</div>
+                    <div class="cs2"><?php echo $cours->count_student; ?></div>
+                </div>
+
+                <div class="lo">
+                    <div class="lo1">Место проведения</div>
+                    <div class="lo2"><?php echo $cours->location; ?></div>
+                </div>
+                <button>Записаться</button>
+            </div>
+        </div>
+
+
         <?php echo $cours->overview; ?><br><br>
         <div id="vk_comments"></div>
     </div>

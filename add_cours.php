@@ -55,7 +55,7 @@ $date = date('Y-m-d\TH:i');
 
                 <label>Выберите способ и место проведение</label>
                 <div class="radio_b">
-                    <label><input class="radio_bb" type="radio" name="pin" value="1" required> Онлайн</label>
+                    <label><input onclick="clear_map()" class="radio_bb" type="radio" name="pin" value="1" required> Онлайн</label>
                     <label><input onclick="rabotai_padla()" class="radio_bb" type="radio" name="pin" value="0" required> По адресу</label>
                 </div>
                 <div class="wrap_map">
@@ -72,7 +72,7 @@ $date = date('Y-m-d\TH:i');
                 <label>Для добавления курса введите текущий пароль</label>
                 <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль" required>
 
-                <button type="submit">Добавить курс</button>
+                <button onclick="mes()" type="submit">Добавить курс</button>
 
                 <div class="msg"></div>
             </form>

@@ -1,21 +1,25 @@
 ymaps.ready(init);
-
+var myMap, myPlacemark, coords;
 function rabotai_padla() {
     document.getElementsByName('location')[0].value = coords;
+
+}
+
+function clear_map() {
+    myMap.geoObjects.removeAll();
 }
 
 function init() {
-    var myPlacemark,
-        myMap = new ymaps.Map('map', {
-            center: [55.753994, 37.622093],
-            zoom: 9
-        }, {
-            searchControlProvider: 'yandex#search'
-        });
+    myMap = new ymaps.Map('map', {
+        center: [55.753994, 37.622093],
+        zoom: 9
+    }, {
+        searchControlProvider: 'yandex#search'
+    });
 
     // Слушаем клик на карте.
     myMap.events.add('click', function (e) {
-        var coords = e.get('coords');
+        coords = e.get('coords');
 
         // Если метка уже создана – просто передвигаем ее.
         if (myPlacemark) {
@@ -65,6 +69,12 @@ function init() {
         });
     }
 }
+function mes(){
+    if (document.getElementsByName('location')[0].value.length == 0) {
+        $('.msg').html("Выберите место!");
+        $('form').css('padding-bottom', '33px');
+    }
+}
 $('form').submit(function (event) {
     event.preventDefault();
     var formNm = $('form')[0];
@@ -90,5 +100,6 @@ $('[value = 1]').click(function () {
 
 $('[value = 0]').click(function () {
     $('.wrap_text').hide(100);
+    document.getElementsByName('location')[0].value = null;
     $('.wrap_map').show(100);
 });

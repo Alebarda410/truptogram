@@ -5,12 +5,12 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
     echo 'Подтвердите пароль!';
 } elseif (strlen($_POST['location']) < 5 && strlen($_POST['location']) > 50) {
     echo 'Слишком короткий адрес!';
-} elseif (strlen($_POST['overview']) < 300 && strlen($_POST['overview']) > 20000) {
-    echo 'Описание должно быть длиннее 300 символов!';
+} elseif (strlen($_POST['overview']) < 500 && strlen($_POST['overview']) > 20000) {
+    echo 'Описание должно быть длиннее 500 символов!';
 } elseif (strlen($_POST['topic']) < 2 && strlen($_POST['topic']) > 50) {
     echo 'Название должно быть длиннее 2 символов!';
 } elseif (strlen($_POST['speaker']) < 2 && strlen($_POST['speaker']) > 50) {
-    echo 'Название должно быть длиннее 2 символов!';
+    echo 'Имя должно быть длиннее 2 символов!';
 } elseif (!ctype_digit($_POST['count_student'])) {
     echo 'Это должно быть числом!';
 } elseif (!is_numeric(strtotime($_POST['date']))) {

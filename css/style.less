@@ -116,23 +116,6 @@ header {
         }
     }
 
-    & .log_btn {
-        color: @red;
-        background-color: white;
-        border: none;
-        width: 90px;
-        height: 38px;
-        font-weight: normal;
-        font-size: 1.2em;
-        border-radius: 3px;
-        margin-right: .5rem;
-        padding: 0;
-
-        :hover {
-            background-color: darken(@light_blue, 5%);
-        }
-    }
-
     &>.lk_mini {
         .flex_cont;
 
@@ -160,7 +143,25 @@ header {
     }
 }
 
+.header_form .log_btn {
+    color: @red;
+    background-color: white;
+    border: none;
+    width: 90px;
+    height: 38px;
+    font-weight: normal;
+    font-size: 1.2em;
+    border-radius: 3px;
+    margin-right: .5rem;
+    padding: 0;
+
+    :hover {
+        background-color: darken(@light_blue, 10%);
+    }
+}
+
 footer {
+    margin-top: 100px;
     .colors(@footer_blue);
     height: 150px;
     width: 100%;

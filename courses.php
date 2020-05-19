@@ -18,30 +18,34 @@ $res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` 
 </head>
 
 <body>
-
-    <?php include "HEADER.php"; ?>
-
+    <a name="top"></a>
+    <?php include "HEADER.php"; ?>  
     <div class="wraper">
         <div class="cont">
 
             <?php foreach ($res as $article) : ?>
                 <div class="cours">
-                    <img width="150px" src="<?php echo $article['logo']; ?>" alt="logo">
+                    <a href="<?php echo 'cours.php?id=' . $article['id']; ?>"><img width="150px" src="<?php echo $article['logo']; ?>" alt="logo"></a>
                     <div class="description">
                         <a href="<?php echo 'cours.php?id=' . $article['id']; ?>" class="zag">
                             <?php echo $article['topic']; ?>
                         </a>
-                        <div class="text">
+                        <span class="text">
                             <?php echo $article['overview']; ?>
-                            <a href="<?php echo 'cours.php?id=' . $article['id']; ?>">Подробнее...</a>
-                        </div>
+                            <a href="<?php echo 'cours.php?id=' . $article['id']; ?>">Подробнее</a>
+                        </span>
+
                     </div>
                 </div>
             <?php endforeach; ?>
 
         </div>
     </div>
-
+    <a href="#top">
+        <div class="back">
+            <img src="img\up.svg" alt="back" width="35px">
+        </div>
+    </a>
     <?php include "FOOTER.php"; ?>
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="js/scroll_courses.js"></script>

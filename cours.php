@@ -24,7 +24,7 @@ $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
     <?php include "HEADER.php"; ?>
 
     <div class="wraper">
-        <?php echo $cours->topic; ?>
+        <div class="zag"><?php echo $cours->topic; ?></div>
         <div class="ov">
             <div class="logo_cr">
                 <img width="500px" src="<?php echo $cours->logo; ?>">
@@ -47,9 +47,11 @@ $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
                 <button>Записаться</button>
             </div>
         </div>
+        <div class="text">
+            <?php echo $cours->overview; ?>
+        </div>
 
 
-        <?php echo $cours->overview; ?><br><br>
         <div id="vk_comments"></div>
     </div>
 

@@ -17,17 +17,23 @@ a>.back {
     left: 0;
     height: 100%;
     width: 50px;
-    background-color: rgba(80, 102, 123, 0.1);
+    background: linear-gradient(to top, rgba(80, 102, 123, 0.0) 10%, rgba(80, 102, 123, 0.1), rgba(80, 102, 123, 0.0) 90%);
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-        background-color: rgba(80, 102, 123, 0.3);
+        background: linear-gradient(to top, rgba(80, 102, 123, 0.0) 10%, rgba(80, 102, 123, 0.3), rgba(80, 102, 123, 0.0) 90%);
         transition: 0.3s;
+        @media screen and (max-width:800px) {
+            background: unset;
+            background-color: rgba(80, 102, 123, 0.3);
+        }
     }
 
     @media screen and (max-width:800px) {
+        background: unset;
+        background-color: rgba(80, 102, 123, 0.1);
         height: 50px;
         width: 100%;
         bottom: 0;

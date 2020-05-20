@@ -35,9 +35,18 @@ button {
 
 .logo_cr {
     margin: 50px;
+
+    @media screen and (max-width:800px) {
+        display: none;
+    }
 }
 
-.sp1,.cs1,.lo1,.sp2,.cs2,.lo2{
+.sp1,
+.cs1,
+.lo1,
+.sp2,
+.cs2,
+.lo2 {
     margin: 10px 0;
 }
 
@@ -50,6 +59,9 @@ button {
 
 .text_ov {
     margin-top: 50px;
+    @media screen and (max-width:800px) {
+        padding-left: 15px;
+    }
 }
 
 .text {
@@ -57,4 +69,5 @@ button {
     line-height: 150%;
     text-align: justify;
     margin-bottom: 50px;
+    padding: 15px;
 }

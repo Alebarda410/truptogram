@@ -1,6 +1,7 @@
 <?php
 require "links/db_connect.php";
 $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
+$_SESSION['current_id'] = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -44,7 +45,16 @@ $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
                     <div class="lo1">Место проведения</div>
                     <div class="lo2"><?php echo $cours->location; ?></div>
                 </div>
-                <button>Записаться</button>
+                <form action="add_rem_cours_to_user.php">
+                    <?php if ($_SESSION['logged_user']->rol == 0) : ?>
+                        <?php if (strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
+                            <button name="zap" type="submit">Записаться</button>
+                        <?php else : ?>
+                            <button name="otp" type="submit">Отписаться</button>
+                            <div class="sp2">Вы уже записаны на этот курс</div>
+                        <?php endif;  ?>
+                    <?php endif;  ?>
+                </form>
             </div>
         </div>
         <div class="text">

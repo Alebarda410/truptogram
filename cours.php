@@ -2,6 +2,7 @@
 require "links/db_connect.php";
 $cours = R::findOne('courses', 'id = ?', [$_GET['id']]);
 $_SESSION['current_id'] = $_GET['id'];
+$urlHeaders = @get_headers($cours->location);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -17,10 +18,10 @@ $_SESSION['current_id'] = $_GET['id'];
     <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
     <title>program</title>
     <script src="https://vk.com/js/api/openapi.js?168" type="text/javascript"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=b9a5170f-cf6d-46ee-8b6c-753687614944&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=b9a5170f-cf6d-46ee-8b6c-753687614944&lang=ru_RU&load=Geolink" type="text/javascript"></script>
 </head>
 
-<body>
+<body onclick="getAddress()">
 
     <?php include "HEADER.php"; ?>
 
@@ -28,7 +29,7 @@ $_SESSION['current_id'] = $_GET['id'];
         <div class="zag"><?php echo $cours->topic; ?></div>
         <div class="ov">
             <div class="logo_cr">
-                <img width="500px" src="<?php echo $cours->logo; ?>">
+                <img width="250px" src="<?php echo $cours->logo; ?>">
             </div>
             <div class="text_ov">
                 <div class="sp">
@@ -36,25 +37,35 @@ $_SESSION['current_id'] = $_GET['id'];
                     <div class="sp2"><?php echo $cours->speaker; ?></div>
                 </div>
 
-                <div class="cs">
-                    <div class="cs1">Свободные места</div>
-                    <div class="cs2"><?php echo $cours->count_student; ?></div>
+                <div class="da">
+                    <div class="da1">Время проведения</div>
+                    <div class="da2"><?php echo $cours->date; ?></div>
                 </div>
 
                 <div class="lo">
                     <div class="lo1">Место проведения</div>
-                    <div class="lo2"><?php echo $cours->location; ?></div>
-                </div>
-                <form action="add_rem_cours_to_user.php">
-                    <?php if ($_SESSION['logged_user']->rol == 0) : ?>
-                        <?php if (strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
-                            <button name="zap" type="submit">Записаться</button>
+                    <div class="lo2">
+
+                        <?php if (strpos($urlHeaders[0], '200')) : ?>
+                            <a target="_blank" href="<?php echo $cours->location; ?>"><?php echo $cours->location; ?></a>
                         <?php else : ?>
-                            <button name="otp" type="submit">Отписаться</button>
-                            <div class="sp2">Вы уже записаны на этот курс</div>
+                            <span class="ymaps-geolink"><?php echo $cours->location; ?></span>
                         <?php endif;  ?>
-                    <?php endif;  ?>
-                </form>
+
+                    </div>
+                </div>
+                <?php if ($_SESSION['logged_user']) : ?>
+                    <form method="POST" action="links\add_rem_cours_to_user.php">
+                        <?php if ($_SESSION['logged_user']->rol == 0) : ?>
+                            <?php if (strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
+                                <button value="zap" name="zap" type="submit">Записаться</button>
+                            <?php else : ?>
+                                <button value="otp" name="zap" type="submit">Отписаться</button>
+                                <div class="sp2">Вы уже записаны на этот курс</div>
+                            <?php endif;  ?>
+                        <?php endif;  ?>
+                    </form>
+                <?php endif;  ?>
             </div>
         </div>
         <div class="text">
@@ -66,7 +77,6 @@ $_SESSION['current_id'] = $_GET['id'];
     </div>
 
     <?php include "FOOTER.php"; ?>
-
     <script type="text/javascript">
         window.onload = function() {
             VK.init({

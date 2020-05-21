@@ -34,7 +34,6 @@ function init() {
                 getAddress(myPlacemark.geometry.getCoordinates());
             });
         }
-        document.getElementsByName('location')[0].value = coords;
         getAddress(coords);
     });
 
@@ -67,6 +66,7 @@ function init() {
                     balloonContent: firstGeoObject.getAddressLine()
                 });
         });
+        document.getElementsByName('location')[0].value = firstGeoObject.getAddressLine();
     }
 }
 function mes(){

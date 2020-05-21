@@ -3,7 +3,7 @@ require 'db_connect.php';
 $cours = R::dispense('courses');
 if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
     echo 'Подтвердите пароль!';
-} elseif (strlen($_POST['location']) < 5 && strlen($_POST['location']) > 50) {
+} elseif (strlen($_POST['location']) < 5 && strlen($_POST['location']) > 200) {
     echo 'Слишком короткий адрес!';
 } elseif (strlen($_POST['overview']) < 500 && strlen($_POST['overview']) > 20000) {
     echo 'Описание должно быть длиннее 500 символов!';
@@ -11,8 +11,6 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
     echo 'Название должно быть длиннее 2 символов!';
 } elseif (strlen($_POST['speaker']) < 2 && strlen($_POST['speaker']) > 50) {
     echo 'Имя должно быть длиннее 2 символов!';
-} elseif (!ctype_digit($_POST['count_student'])) {
-    echo 'Это должно быть числом!';
 } elseif (!is_numeric(strtotime($_POST['date']))) {
     echo 'Некорректная дата!';
 } else {
@@ -29,7 +27,6 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
                 $cours->overview = $_POST['overview'];
                 $cours->topic = $_POST['topic'];
                 $cours->speaker = $_POST['speaker'];
-                $cours->count_student = $_POST['count_student'];
                 $cours->date = $_POST['date'];
                 R::store($cours);
                 echo '1';

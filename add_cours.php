@@ -26,8 +26,6 @@ $date = date('Y-m-d\TH:i');
 
 <body>
 
-    <!-- прикрутить справа предпросмотр общей страницы курса и самой страницы -->
-
     <?php include "HEADER.php"; ?>
 
     <div class="wraper">
@@ -46,9 +44,6 @@ $date = date('Y-m-d\TH:i');
 
                 <label>Дата и время курса</label>
                 <input min="<?php echo $date; ?>" type="datetime-local" name="date" required>
-
-                <label>Максимальное число участников</label>
-                <input type="number" name="count_student" max="2147483647" placeholder="0 если неограниченно" required>
 
                 <label>Подробное описание курса</label>
                 <textarea required maxlength="5000" placeholder="Максимум 5000 символов" form="tipo_id" name="overview" id="" cols="30" rows="10"></textarea>

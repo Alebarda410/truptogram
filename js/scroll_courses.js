@@ -2,6 +2,12 @@ $(document).ready(function () {
 
     var inProgress = false;
     var startFrom = 10;
+    var btn = $('#back');
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, '300');
+    });
 
     $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200 && !inProgress) {
@@ -25,6 +31,11 @@ $(document).ready(function () {
                     }
                 }
             });
+        }
+        if ($(window).scrollTop() > 150) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
         }
     });
 });

@@ -18,10 +18,19 @@ $res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` 
 </head>
 
 <body>
-    <a name="top"></a>
-    <?php include "HEADER.php"; ?>  
+    <?php include "HEADER.php"; ?>
     <div class="wraper">
+
         <div class="cont">
+
+            <div class="menu">
+                <div class="xz_chto">Активные курсы</div>
+                <div class="search">
+                    <input class="search" type="search" placeholder="Поиск курсов">
+                    <button>Поиск</button>
+                </div>
+
+            </div>
 
             <?php foreach ($res as $article) : ?>
                 <div class="cours">
@@ -41,11 +50,9 @@ $res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` 
 
         </div>
     </div>
-    <a href="#top">
-        <div class="back">
-            <img src="img\up.svg" alt="back" width="35px">
-        </div>
-    </a>
+    <div id="back">
+        <img src="img\up.svg" alt="back" width="35px">
+    </div>
     <?php include "FOOTER.php"; ?>
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="js/scroll_courses.js"></script>

@@ -73,7 +73,9 @@ $urlHeaders = @get_headers($cours->location);
             <?php echo $cours->overview; ?>
         </div>
 
-        <div id="vk_comments"></div>
+        <?php if ($_SESSION['logged_user']->verification == 1) : ?>
+            <div id="vk_comments"></div>
+        <?php endif;  ?>
     </div>
 
     <?php include "FOOTER.php"; ?>

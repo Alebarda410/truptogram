@@ -42,13 +42,11 @@ header {
 
     @media screen and (max-width:@widh_media) {
         flex-direction: column-reverse;
-
     }
 }
 
 .header_nav {
     .flex_cont;
-
     @media screen and (max-width:@widh_media) {
         flex-direction: column;
         align-items: flex-start;
@@ -70,6 +68,10 @@ header {
         font-weight: 500;
         font-size: 1.5em;
         .flex_cont;
+
+        @media screen and (max-width:@widh_media) {
+           font-size: 1.3em;
+        }
 
         &>.list_item {
             white-space: pre;
@@ -99,7 +101,7 @@ header {
 
 
     @media screen and (max-width:@widh_media) {
-        width: 400px;
+        width: 100%;
         justify-content: space-between;
     }
 

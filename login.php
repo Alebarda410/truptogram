@@ -26,10 +26,20 @@ if ($_SESSION['logged_user']) {
     <form>
 
         <label>Ваш Email</label>
-        <input maxlength="50" type="email" name="email" placeholder="Введите email" required>
+        <input
+            maxlength="50"
+            type="email"
+            name="email"
+            placeholder="Введите email"
+            required>
         
         <label>Ваш Пароль</label>
-        <input maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
+        <input
+            maxlength="50"
+            type="password"
+            name="password"
+            placeholder="Введите пароль"
+            required>
        
         <button type="submit">Войти</button>
         <p color>

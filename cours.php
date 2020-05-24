@@ -21,7 +21,7 @@ $urlHeaders = @get_headers($cours->location);
     <script src="https://api-maps.yandex.ru/2.1/?apikey=b9a5170f-cf6d-46ee-8b6c-753687614944&lang=ru_RU&load=Geolink" type="text/javascript"></script>
 </head>
 
-<body onclick="getAddress()">
+<body>
 
     <?php include "HEADER.php"; ?>
 
@@ -49,19 +49,20 @@ $urlHeaders = @get_headers($cours->location);
                         <?php if (strpos($urlHeaders[0], '200')) : ?>
                             <a target="_blank" href="<?php echo $cours->location; ?>"><?php echo $cours->location; ?></a>
                         <?php else : ?>
-                            <span class="ymaps-geolink"><?php echo $cours->location; ?></span>
+                            <div class="ymaps-geolink"><?php echo $cours->location; ?></div>
                         <?php endif;  ?>
 
                     </div>
                 </div>
                 <?php if ($_SESSION['logged_user']) : ?>
-                    <form method="POST" action="links\add_rem_cours_to_user.php">
-                        <?php if ($_SESSION['logged_user']->rol == 0) : ?>
+                    <form>
+                        <?php if ($_SESSION['logged_user']->rol == 0 && $_SESSION['logged_user']->verification == 1) : ?>
                             <?php if (strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
-                                <button value="zap" name="zap" type="submit">Записаться</button>
+                                <input type="hidden" name="zap" value="zap">
+                                <button id="bt" type="submit">Записаться</button>
                             <?php else : ?>
-                                <button value="otp" name="zap" type="submit">Отписаться</button>
-                                <div class="sp2">Вы уже записаны на этот курс</div>
+                                <input type="hidden" name="zap" value="otp">
+                                <button id="bt" type="submit">Отписаться</button>
                             <?php endif;  ?>
                         <?php endif;  ?>
                     </form>
@@ -72,11 +73,12 @@ $urlHeaders = @get_headers($cours->location);
             <?php echo $cours->overview; ?>
         </div>
 
-
         <div id="vk_comments"></div>
     </div>
 
     <?php include "FOOTER.php"; ?>
+    <script type="text/javascript" src="libs/jquery.js"></script>
+    <script src="js\cours.js"></script>
     <script type="text/javascript">
         window.onload = function() {
             VK.init({

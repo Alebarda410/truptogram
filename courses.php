@@ -25,11 +25,6 @@ $res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` 
 
             <div class="menu">
                 <div class="xz_chto">Активные курсы</div>
-                <div class="search">
-                    <input class="search" type="search" placeholder="Поиск курсов">
-                    <button>Поиск</button>
-                </div>
-
             </div>
 
             <?php foreach ($res as $article) : ?>

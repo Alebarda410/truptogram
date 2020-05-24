@@ -7,7 +7,7 @@
             <ul class="header_list">
                 <li class="list_item"><a href="/">Главная</a></li>
                 <li class="list_item"><a href="courses.php">Курсы</a></li>
-                <li class="list_item"><a href="">Контакты</a></li>
+                <li class="list_item"><a href="contact.php">Контакты</a></li>
                 <li class="list_item"><a href="">О нас</a></li>
             </ul>
         </nav>

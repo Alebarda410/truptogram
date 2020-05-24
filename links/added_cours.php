@@ -29,7 +29,7 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
                 $cours->speaker = $_POST['speaker'];
                 $cours->date = $_POST['date'];
                 R::store($cours);
-                echo '1';
+                echo 'Курс добавлен!';
             } else {
                 echo 'Неверный тип файла!';
             }

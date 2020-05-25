@@ -3,6 +3,14 @@ require "links/db_connect.php";
 if ($_SESSION['logged_user']) {
     header('Location: /');
 }
+$t = $_SERVER['HTTP_REFERER'];
+if (!empty($t)) {
+    if ($t != 'https://truprogram.space/login.php') {
+        $_SESSION['back'] = $_SERVER['HTTP_REFERER'];
+    }
+} else {
+    $_SESSION['back'] = 'index.php';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -19,7 +27,7 @@ if ($_SESSION['logged_user']) {
 </head>
 
 <body>
-    <a href="/">
+    <a href="<?php echo $_SESSION['back']; ?>">
         <div class="back">
             <img id="o" src="img\back.svg" alt="back" width="30px">
             <img id="d" src="img\back_mini.svg" alt="back" width="40px">
@@ -28,43 +36,21 @@ if ($_SESSION['logged_user']) {
     <form>
 
         <label>Ваше имя</label>
-        <input
-            oninput="nameFun(this)"
-            maxlength="12"
-            type="text"
-            name="name"
-            placeholder="Например Иван"
-            required>
+        <input oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Например Иван" required>
 
         <label>Ваш Email</label>
-        <input
-            oninput="emailFun(this)"
-            maxlength="50"
-            type="email"
-            name="email"
-            placeholder="example@mail.ru"
-            required>
+        <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="example@mail.ru" required>
 
         <label>Ваш пароль</label>
-        <input onblur="remove()" onfocus="tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- одну цифру<br>быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
+        <input readonly onfocus="this.removeAttribute('readonly')" onblur="remove()" onfocus="tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- одну цифру<br>быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
 
         <label>Подтверждение пароля</label>
-        <input oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
+        <input readonly onfocus="this.removeAttribute('readonly')" oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>
 
         <label>Кто вы?</label>
         <div class="radio_b">
-            <label><input
-                class="radio_bb"
-                type="radio"
-                name="rol"
-                value="1"
-                required> Лектор</label>
-            <label><input
-                class="radio_bb"
-                type="radio"
-                name="rol"
-                value="0"
-                required> Слушатель</label>
+            <label><input class="radio_bb" type="radio" name="rol" value="1" required> Лектор</label>
+            <label><input class="radio_bb" type="radio" name="rol" value="0" required> Слушатель</label>
         </div>
 
         <button type="submit">Зарегистрироваться</button>
@@ -83,7 +69,7 @@ if ($_SESSION['logged_user']) {
                     function(data) {
                         if (data == '1') {
                             alert('Пройдите по ссылке в письме на почте чтобы получить полный доступ!');
-                            document.location.href = "index.php";
+                            document.location.href = "<?php echo $_SESSION['back']; ?>";
                         } else {
                             $('.msg').html(data);
                             $('form').css('padding-bottom', '33px');

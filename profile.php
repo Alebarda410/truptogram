@@ -34,62 +34,27 @@ $user = $_SESSION['logged_user'];
                 <form>
 
                     <label>Текущее имя: <?php echo $user->name; ?></label>
-                    <input
-                        readonly
-                        onfocus="this.removeAttribute('readonly')"
-                        oninput="nameFun(this)"
-                        maxlength="12"
-                        type="text"
-                        name="name"
-                        placeholder="Введите новое имя"
-                        pattern="^[А-Я][а-я]{1,11}$">
+                    <input readonly onfocus="this.removeAttribute('readonly')" oninput="nameFun(this)" maxlength="12" type="text" name="name" placeholder="Введите новое имя" pattern="^[А-Я][а-я]{1,11}$">
 
                     <label>Текущий Email: <?php echo $user->email; ?></label>
-                    <input
-                        oninput="emailFun(this)"
-                        maxlength="50" type="email"
-                        name="email"
-                        placeholder="Введите новый email"
-                        readonly
-                        onfocus="this.removeAttribute('readonly')">
+                    <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="Введите новый email" readonly onfocus="this.removeAttribute('readonly')">
 
                     <label>Изменить аватар</label>
                     <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
                     <input type="file" name="avatar" accept="image/*">
 
                     <label>Для изменения данных введите текущий пароль</label>
-                    <input
-                        maxlength="50"
-                        type="password"
-                        name="password"
-                        placeholder="Введите ваш пароль"
-                        readonly
-                        onfocus="this.removeAttribute('readonly')">
+                    <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль" readonly onfocus="this.removeAttribute('readonly')">
 
                     <button class="ch_ps">Сменить пароль <img id="up_down" width="15px" src="img/down.svg" alt="" srcset=""></button>
 
                     <div class="wrap_pas_change">
                         <div class="pas_change">
                             <label>Новый пароль</label>
-                            <input
-                                id="pas1"
-                                oninput="acept_pasFun(this)"
-                                value=""
-                                maxlength="50"
-                                type="password"
-                                name="new_password"
-                                placeholder="Введите новый пароль"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}">
+                            <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}">
 
                             <label>Подтверждение нового пароля</label>
-                            <input
-                                id="pas2"
-                                oninput="acept_pas2Fun(this)"
-                                value=""
-                                maxlength="50"
-                                type="password"
-                                name="new_password_2"
-                                placeholder="Подтвердите новый пароль">
+                            <input id="pas2" oninput="acept_pas2Fun(this)" value="" maxlength="50" type="password" name="new_password_2" placeholder="Подтвердите новый пароль">
                         </div>
                     </div>
 
@@ -105,46 +70,14 @@ $user = $_SESSION['logged_user'];
                     <?php else : ?>
                         <p>Вы слушатель</p>
                     <?php endif;  ?>
-                    <a href="my_curses.php"><button  class="left_btn">Мои курсы</button></a>
-                    <a href="links\del_prof.php"><button  class="left_btn">Удалить аккаунт</button></a>
-                    <a href="contact.php#email"><button  class="left_btn">Написать администратору</button></a>
+                    <a href="my_curses.php"><button class="left_btn">Мои курсы</button></a>
+                    <button onclick="del()" class="left_btn">Удалить аккаунт</button>
+                    <a href="contact.php#email"><button class="left_btn">Написать администратору</button></a>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="js/prof_edit.js"></script>
         <script type="text/javascript" src="libs/jquery.js"></script>
-        <script type="text/javascript">
-            $('form').submit(function(event) {
-                event.preventDefault();
-                var formNm = $('form')[0];
-                var formData = new FormData(formNm);
-                $.ajax({
-                    type: 'POST',
-                    url: 'links/edit_user.php',
-                    enctype: 'multipart/form-data',
-                    data: new FormData(this),
-                    processData: false,
-                    contentType: false,
-                    success: function(data) {
-                        $('.msg').html(data);
-                        $('form').css('padding-bottom', '33px');
-                    }
-                });
-            });
-            var ff = -1;
-            $('.ch_ps').click(function() {
-                event.preventDefault();
-                ff *= -1;
-                $('#pas1').val('');
-                $('#pas2').val('');
-                $('.wrap_pas_change').toggle(200);
-                if (ff == 1) {
-                    $('#up_down').attr('src', 'img/up.svg');
-                } else {
-                    $('#up_down').attr('src', 'img/down.svg');
-                }
-            });
-        </script>
+        <script type="text/javascript" src="js/prof_edit.js"></script>
     <?php endif; ?>
     <?php include "FOOTER.php"; ?>
 </body>

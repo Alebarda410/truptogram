@@ -75,6 +75,8 @@ $urlHeaders = @get_headers($cours->location);
 
         <?php if ($_SESSION['logged_user']->verification == 1) : ?>
             <div id="vk_comments"></div>
+        <?php else : ?>
+            <div class="da2"> Войдите чтобы просмотреть или оставить коментарии!</div>
         <?php endif;  ?>
     </div>
 

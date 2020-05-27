@@ -33,64 +33,25 @@ $date = date('Y-m-d\TH:i');
             <form id="tipo_id">
 
                 <label>Название курса</label>
-                <input
-                    maxlength="50"
-                    type="text"
-                    name="topic"
-                    placeholder="HTML язык прораммирования"
-                    required>
+                <input maxlength="50" type="text" name="topic" placeholder="HTML язык прораммирования" required>
 
                 <label>Лектор курса</label>
-                <input
-                    maxlength="50"
-                    type="text"
-                    name="speaker"
-                    placeholder="<?php echo $_SESSION['logged_user']->name; ?>"
-                    required>
+                <input maxlength="50" type="text" name="speaker" placeholder="<?php echo $_SESSION['logged_user']->name; ?>" required>
 
                 <label>Логотип курса</label>
-                <input
-                    type="hidden"
-                    name="MAX_FILE_SIZE"
-                    value="5242880‬" />
-                <input
-                    type="file"
-                    name="logo"
-                    accept="image/*"
-                    required>
+                <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
+                <input type="file" name="logo" accept="image/*" required>
 
                 <label>Дата и время курса</label>
-                <input
-                    min="<?php echo $date; ?>"
-                    type="datetime-local"
-                    name="date"
-                    required>
+                <input min="<?php echo $date; ?>" type="datetime-local" name="date" required>
 
                 <label>Подробное описание курса</label>
-                <textarea
-                    required
-                    maxlength="5000"
-                    placeholder="Максимум 5000 символов минимум 300"
-                    form="tipo_id" name="overview"
-                    cols="30"
-                    rows="10"></textarea>
+                <textarea required maxlength="5000" placeholder="Максимум 5000 символов минимум 300" form="tipo_id" name="overview" cols="30" rows="10"></textarea>
 
                 <label>Выберите способ и место проведение</label>
                 <div class="radio_b">
-                    <label><input
-                        onclick="clear_map()"
-                        class="radio_bb"
-                        type="radio"
-                        name="pin"
-                        value="1"
-                        required> Онлайн</label>
-                    <label><input
-                        onclick="rabotai_padla()"
-                        class="radio_bb"
-                        type="radio"
-                        name="pin"
-                        value="0"
-                        required> По адресу</label>
+                    <label><input onclick="clear_map()" class="radio_bb" type="radio" name="pin" value="1" required> Онлайн</label>
+                    <label><input onclick="rabotai_padla()" class="radio_bb" type="radio" name="pin" value="0" required> По адресу</label>
                 </div>
                 <div class="wrap_map">
                     <label>Кликните по карте для выбора места</label>
@@ -99,24 +60,12 @@ $date = date('Y-m-d\TH:i');
                 <div class="wrap_text">
                     <div class="cost_flex">
                         <label>Ссылка на ваш сайт</label>
-                        <input
-                            maxlength="50"
-                            type="text"
-                            name="location"
-                            placeholder="Web адрес"
-                            required>
+                        <input maxlength="50" type="text" name="location" placeholder="Web адрес" required>
                     </div>
                 </div>
 
                 <label>Для добавления курса введите текущий пароль</label>
-                <input
-                    maxlength="50"
-                    type="password"
-                    name="password"
-                    placeholder="Введите ваш пароль"
-                    required
-                    readonly
-                    onfocus="this.removeAttribute('readonly')">
+                <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль" required readonly onfocus="this.removeAttribute('readonly')">
 
                 <button onclick="mes()" type="submit">Добавить курс</button>
 

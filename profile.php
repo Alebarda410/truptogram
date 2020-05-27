@@ -51,7 +51,7 @@ $user = $_SESSION['logged_user'];
                     <div class="wrap_pas_change">
                         <div class="pas_change">
                             <label>Новый пароль</label>
-                            <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s]).{6,}">
+                            <input id="pas1" oninput="acept_pasFun(this)" value="" maxlength="50" type="password" name="new_password" placeholder="Введите новый пароль" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}">
 
                             <label>Подтверждение нового пароля</label>
                             <input id="pas2" oninput="acept_pas2Fun(this)" value="" maxlength="50" type="password" name="new_password_2" placeholder="Подтвердите новый пароль">

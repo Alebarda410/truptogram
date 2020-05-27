@@ -15,7 +15,7 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
     echo 'Некорректная дата!';
 } else {
     if ($_FILES['logo']['name']) {
-        if ($_FILES['logo']['size'] > 5 * 1024 * 1024) {
+        if ($_FILES['logo']['size'] == 0 || $_FILES['logo']['size'] > 5242880) {
             echo 'Файл должен быть меньше 5Мб!';
         } else {
             $tmp_name = $_FILES['logo']['tmp_name'];

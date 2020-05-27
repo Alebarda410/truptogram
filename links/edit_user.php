@@ -11,7 +11,7 @@ if (!password_verify($_POST['password'], $user->password)) {
     if ($name_l > 0) {
         if ($_POST['name'] != $user->name) {
             if (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
-                echo 'Юзай форму с JS падла1!';
+                echo 'Имя не соответствует требованиям!';
             } else {
                 $user->name = $_POST['name'];
                 $gg = 1;
@@ -24,9 +24,9 @@ if (!password_verify($_POST['password'], $user->password)) {
         if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
             echo 'Такой Email уже зарегистроирован!';
         } elseif ($email_l > 50) {
-            echo 'Юзай форму с JS падла2!';
+            echo 'Слишком длинный Email!';
         } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            echo 'Не корректный email!';
+            echo 'Не корректный Email!';
         } else {
             $user->email = $_POST['email'];
             $gg = 1;
@@ -34,13 +34,13 @@ if (!password_verify($_POST['password'], $user->password)) {
     }
     if ($new_pas_l > 0) {
         if ($new_pas_l > 50) {
-            echo 'Юзай форму с JS падла3!';
+            echo 'Некорректный пароль!';
         } elseif ($_POST['new_password_2'] != $_POST['new_password']) {
-            echo 'Юзай форму с JS падла4!';
+            echo 'Пароли не совпадают!';
         } elseif (password_verify($_POST['new_password'], $user->password)) {
             echo 'Новый и старый пароли совпадают!';
         } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/', $_POST['password'])) {
-            echo 'Юзай форму с JS падла5!';
+            echo 'Пароль не соответствует требованиям!';
         } else {
             $user->password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
             $gg = 1;
@@ -48,7 +48,7 @@ if (!password_verify($_POST['password'], $user->password)) {
     }
 
     if ($_FILES['avatar']['name']) {
-        if ($_FILES['avatar']['size'] > 5 * 1024 * 1024) {
+        if ($_FILES['avatar']['size'] == 0 || $_FILES['logo']['size'] > 5242880) {
             echo 'Файл должен быть меньше 5Мб!';
         } else {
             $tmp_name = $_FILES['avatar']['tmp_name'];

@@ -10,8 +10,8 @@
             <a href="https://www.youtube.com"><img width="25rep" src="img/youtube.svg" alt="youtube"></a>
         </div>
         <div class="contacts">
-            <p>official@truprogram.space</p>
-            <p>88005553535</p>
+            <a href="mailto:official@truprogram.space">official@truprogram.space</a>
+            <a href="tel:+78005553535">88005553535</a>
         </div>
     </div>
 </footer>

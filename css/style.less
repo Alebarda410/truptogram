@@ -47,6 +47,7 @@ header {
 
 .header_nav {
     .flex_cont;
+
     @media screen and (max-width:@widh_media) {
         flex-direction: column;
         align-items: flex-start;
@@ -70,7 +71,7 @@ header {
         .flex_cont;
 
         @media screen and (max-width:@widh_media) {
-           font-size: 1.3em;
+            font-size: 1.3em;
         }
 
         &>.list_item {
@@ -188,8 +189,14 @@ footer {
         align-items: center;
         flex-direction: column;
 
-        &>p {
+        &>a {
             padding: .25rem .5rem;
+            transition: border-bottom .5s;
+
+            &:link,
+            &:visited {
+                color: @dark_blue;
+            }
         }
     }
 }

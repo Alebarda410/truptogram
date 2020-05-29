@@ -17,4 +17,12 @@ if (strlen($_SESSION['current_id']) > 4) {
         $_SESSION['logged_user']->courses = $user->courses;
         echo 'otp';
     }
+    if ($_POST['zap'] === 'del') {
+        $cours = R::load('courses', $_SESSION['current_id']);
+        R::trash($cours);
+        $user->courses = str_replace(',' . $_SESSION['current_id'], '', $user->courses);
+        R::store($user);
+        $_SESSION['logged_user']->courses = $user->courses;
+        echo 'del';
+    }
 }

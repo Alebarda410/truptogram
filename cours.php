@@ -54,9 +54,9 @@ $urlHeaders = @get_headers($cours->location);
 
                     </div>
                 </div>
-                <?php if ($_SESSION['logged_user']) : ?>
+                <?php if ($_SESSION['logged_user']->verification == 1) : ?>
                     <form>
-                        <?php if ($_SESSION['logged_user']->rol == 0 && $_SESSION['logged_user']->verification == 1) : ?>
+                        <?php if ($_SESSION['logged_user']->rol == 0) : ?>
                             <?php if (strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
                                 <input type="hidden" name="zap" value="zap">
                                 <button id="bt" type="submit">Записаться</button>
@@ -64,6 +64,9 @@ $urlHeaders = @get_headers($cours->location);
                                 <input type="hidden" name="zap" value="otp">
                                 <button id="bt" type="submit">Отписаться</button>
                             <?php endif;  ?>
+                        <?php elseif (!strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
+                            <input type="hidden" name="zap" value="del">
+                            <button id="bt" type="submit">Удалить</button>
                         <?php endif;  ?>
                     </form>
                 <?php endif;  ?>

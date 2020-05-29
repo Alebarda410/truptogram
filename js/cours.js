@@ -10,6 +10,9 @@ $('form').submit(function (event) {
                 $('#bt').html('Записаться');
                 $('input[value="otp"]').attr('value', 'zap');
             }
+            if (data == 'del') {
+                window.history.back();;
+            }
         }
     );
 });

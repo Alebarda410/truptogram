@@ -29,6 +29,11 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
                 $cours->speaker = $_POST['speaker'];
                 $cours->date = $_POST['date'];
                 R::store($cours);
+                $cours = R::findOne('courses', 'logo = ?', ['../upload/' . $name]);
+                $user = $_SESSION['logged_user'];
+                $user->courses = $user->courses . ',' . $cours->id;
+                R::store($user);
+                $_SESSION['logged_user']->courses = $user->courses;
                 echo 'Курс добавлен!';
             } else {
                 echo 'Неверный тип файла!';

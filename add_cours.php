@@ -60,14 +60,14 @@ $date = date('Y-m-d\TH:i');
                 <div class="wrap_text">
                     <div class="cost_flex">
                         <label>Ссылка на ваш сайт</label>
-                        <input maxlength="50" type="text" name="location" placeholder="Web адрес" required>
+                        <input maxlength="200" type="text" name="location" placeholder="Web адрес" required>
                     </div>
                 </div>
 
                 <label>Для добавления курса введите текущий пароль</label>
                 <input maxlength="50" type="password" name="password" placeholder="Введите ваш пароль" required readonly onfocus="this.removeAttribute('readonly')">
 
-                <button onclick="mes()" type="submit">Добавить курс</button>
+                <button type="submit">Добавить курс</button>
 
                 <div class="msg"></div>
             </form>

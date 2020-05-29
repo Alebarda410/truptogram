@@ -52,7 +52,7 @@ function init() {
         myPlacemark.properties.set('iconCaption', 'поиск...');
         ymaps.geocode(coords).then(function (res) {
             var firstGeoObject = res.geoObjects.get(0);
-
+            var adr = firstGeoObject.getAddressLine();
             myPlacemark.properties
                 .set({
                     // Формируем строку с данными об объекте.
@@ -65,14 +65,9 @@ function init() {
                     // В качестве контента балуна задаем строку с адресом объекта.
                     balloonContent: firstGeoObject.getAddressLine()
                 });
+            document.getElementsByName('location')[0].value = adr;
         });
-        document.getElementsByName('location')[0].value = firstGeoObject.getAddressLine();
-    }
-}
-function mes(){
-    if (document.getElementsByName('location')[0].value.length == 0) {
-        $('.msg').html("Выберите место!");
-        $('form').css('padding-bottom', '33px');
+
     }
 }
 $('form').submit(function (event) {

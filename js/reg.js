@@ -39,6 +39,7 @@ function nameFun(name) {
 }
 var tooltipElem;
 function tooltip(elem) {
+    elem.removeAttribute('readonly');
     tooltipElem = document.createElement('div');
     tooltipElem.className = 'tooltip';
     tooltipElem.innerHTML = elem.getAttribute('data-tooltip');

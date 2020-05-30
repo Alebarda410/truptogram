@@ -64,7 +64,7 @@ $urlHeaders = @get_headers($cours->location);
                                 <input type="hidden" name="zap" value="otp">
                                 <button id="bt" type="submit">Отписаться</button>
                             <?php endif;  ?>
-                        <?php elseif (!strpos($_SESSION['logged_user']->courses, $_GET['id']) === false) : ?>
+                        <?php elseif ($_SESSION['logged_user']->rol == 1 && strpos($_SESSION['logged_user']->courses, $_GET['id']) !== false) : ?>
                             <input type="hidden" name="zap" value="del">
                             <button id="bt" type="submit">Удалить</button>
                         <?php endif;  ?>
@@ -79,7 +79,7 @@ $urlHeaders = @get_headers($cours->location);
         <?php if ($_SESSION['logged_user']->verification == 1) : ?>
             <div id="vk_comments"></div>
         <?php else : ?>
-            <div class="da2"> Войдите чтобы просмотреть или оставить коментарии!</div>
+            <div class="da2"> Подтвердите почту чтобы просмотреть или оставить коментарий!</div>
         <?php endif;  ?>
     </div>
 

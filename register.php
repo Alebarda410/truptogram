@@ -42,7 +42,7 @@ if (!empty($t)) {
         <input oninput="emailFun(this)" maxlength="50" type="email" name="email" placeholder="example@mail.ru" required>
 
         <label>Ваш пароль</label>
-        <input readonly onfocus="this.removeAttribute('readonly')" onblur="remove()" onfocus="tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- одну цифру<br>быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
+        <input readonly onblur="remove()" onfocus="tooltip(this)" data-tooltip="Должен содержать минимум:<br>- одну латинскую букву<br>- одну заглавную букву<br>- одну цифру<br>быть длиннее 6 сиволов" oninput="acept_pasFun(this)" maxlength="50" type="password" name="password" placeholder="Введите пароль" required>
 
         <label>Подтверждение пароля</label>
         <input readonly onfocus="this.removeAttribute('readonly')" oninput="acept_pas2Fun(this)" maxlength="50" type="password" name="password_2" placeholder="Подтвердите пароль" required>

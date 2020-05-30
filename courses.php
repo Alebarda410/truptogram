@@ -34,10 +34,10 @@ $res = R::getAll("SELECT id, overview, topic, logo FROM `courses` ORDER BY `id` 
                         <a href="<?php echo 'cours.php?id=' . $article['id']; ?>" class="zag">
                             <?php echo $article['topic']; ?>
                         </a>
-                        <span class="text">
+                        <div class="text">
                             <?php echo $article['overview']; ?>
                             <a href="<?php echo 'cours.php?id=' . $article['id']; ?>">Подробнее</a>
-                        </span>
+                        </div>
 
                     </div>
                 </div>

@@ -5,7 +5,7 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
     echo 'Подтвердите пароль!';
 } elseif (strlen($_POST['location']) < 5 && strlen($_POST['location']) > 200) {
     echo 'Слишком короткий адрес!';
-} elseif (strlen($_POST['overview']) < 500 && strlen($_POST['overview']) > 20000) {
+} elseif (strlen($_POST['overview']) < 500 && strlen($_POST['overview']) > 5000) {
     echo 'Описание должно быть длиннее 500 символов!';
 } elseif (strlen($_POST['topic']) < 2 && strlen($_POST['topic']) > 50) {
     echo 'Название должно быть длиннее 2 символов!';
@@ -29,7 +29,6 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
                 $cours->speaker = $_POST['speaker'];
                 $cours->date = $_POST['date'];
                 R::store($cours);
-                $cours = R::findOne('courses', 'logo = ?', ['../upload/' . $name]);
                 $user = $_SESSION['logged_user'];
                 $user->courses = $user->courses . ',' . $cours->id;
                 R::store($user);

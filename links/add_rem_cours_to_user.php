@@ -19,6 +19,7 @@ if (strlen($_SESSION['current_id']) > 4) {
     }
     if ($_POST['zap'] === 'del') {
         $cours = R::load('courses', $_SESSION['current_id']);
+        unlink($cours->logo);
         R::trash($cours);
         $user->courses = str_replace(',' . $_SESSION['current_id'], '', $user->courses);
         R::store($user);

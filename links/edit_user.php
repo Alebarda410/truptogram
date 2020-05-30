@@ -55,6 +55,9 @@ if (!password_verify($_POST['password'], $user->password)) {
             if (preg_match('/^image/', mime_content_type($tmp_name))) {
                 $name = time() . $_FILES['avatar']['name'];
                 move_uploaded_file($tmp_name, '../upload/' . $name);
+                if ($user->avatar != 'upload\def_avatar.svg') {
+                    unlink($user->avatar);
+                }
                 $user->avatar = '../upload/' . $name;
                 $gg = 1;
             } else {

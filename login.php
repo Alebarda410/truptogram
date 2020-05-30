@@ -34,7 +34,7 @@ if (!empty($t)) {
         </div>
     </a>
     <form>
-
+    
         <label>Ваш Email</label>
         <input maxlength="50" type="email" name="email" placeholder="Введите email" required>
 

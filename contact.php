@@ -38,7 +38,7 @@ require "links/db_connect.php";
                 <label>Email для ответа</label>
                 <input type="email" name="email" placeholder="Введите email для ответа">
                 <label>Суть обращения</label>
-                <textarea placeholder="Опишите суть обращения" name="text" cols="100" rows="10"></textarea>
+                <textarea placeholder="Опишите суть обращения (минимум 10 символов)" name="text" cols="100" rows="10"></textarea>
                 <button type="submit">Отправить</button>
                 <div class="msg"></div>
             </form>

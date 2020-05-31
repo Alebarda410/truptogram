@@ -38,7 +38,7 @@ $date = date('Y-m-d\TH:i');
                 <label>Лектор курса</label>
                 <input maxlength="50" type="text" name="speaker" placeholder="<?php echo $_SESSION['logged_user']->name; ?>" required>
 
-                <label>Логотип курса</label>
+                <label>Логотип курса (лучше квадратный)</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="5242880‬" />
                 <input type="file" name="logo" accept="image/*" required>
 

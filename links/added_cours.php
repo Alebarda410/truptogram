@@ -2,21 +2,21 @@
 require 'db_connect.php';
 $cours = R::dispense('courses');
 if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
-    echo 'Подтвердите пароль!';
+    exit ('Подтвердите пароль!');
 } elseif (strlen($_POST['location']) < 5 && strlen($_POST['location']) > 200) {
-    echo 'Слишком короткий адрес!';
+    exit ('Слишком короткий адрес!');
 } elseif (strlen($_POST['overview']) < 500 && strlen($_POST['overview']) > 5000) {
-    echo 'Описание должно быть длиннее 500 символов!';
+    exit ('Описание должно быть длиннее 500 символов!');
 } elseif (strlen($_POST['topic']) < 2 && strlen($_POST['topic']) > 50) {
-    echo 'Название должно быть длиннее 2 символов!';
+    exit ('Название должно быть длиннее 2 символов!');
 } elseif (strlen($_POST['speaker']) < 2 && strlen($_POST['speaker']) > 50) {
-    echo 'Имя должно быть длиннее 2 символов!';
+    exit ('Имя должно быть длиннее 2 символов!');
 } elseif (!is_numeric(strtotime($_POST['date']))) {
-    echo 'Некорректная дата!';
+    exit ('Некорректная дата!');
 } else {
     if ($_FILES['logo']['name']) {
         if ($_FILES['logo']['size'] == 0 || $_FILES['logo']['size'] > 5242880) {
-            echo 'Файл должен быть меньше 5Мб!';
+            exit ('Файл должен быть меньше 5Мб!');
         } else {
             $tmp_name = $_FILES['logo']['tmp_name'];
             if (preg_match('/^image/', mime_content_type($tmp_name))) {
@@ -33,9 +33,9 @@ if (!password_verify($_POST['password'], $_SESSION['logged_user']->password)) {
                 $user->courses = $user->courses . ',' . $cours->id;
                 R::store($user);
                 $_SESSION['logged_user']->courses = $user->courses;
-                echo 'Курс добавлен!';
+                exit ('Курс добавлен!');
             } else {
-                echo 'Неверный тип файла!';
+                exit ('Неверный тип файла!');
             }
         }
     }

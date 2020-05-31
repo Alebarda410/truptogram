@@ -3,7 +3,7 @@ require 'db_connect.php';
 require '../libs/phpmailer/PHPMailer.php';
 require '../libs/phpmailer/Exception.php';
 require '../libs/phpmailer/SMTP.php';
-if (strlen($_POST['text']) > 10 && strlen($_POST['name']) > 2) {
+if (strlen($_POST['text']) > 10 && strlen($_POST['name']) > 2 && strlen($_POST['text']) < 5000 && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->CharSet = 'utf-8';
     $mail->isSMTP();
@@ -19,8 +19,8 @@ if (strlen($_POST['text']) > 10 && strlen($_POST['name']) > 2) {
     $mail->Subject = 'Форма обратной связи';
     $mail->Body = $_POST['text'].' - '.$_POST['email'];
     $mail->send();
-    echo 'Письмо отправлено!';
+    exit ('Письмо отправлено!');
 }
 else{
-    echo 'Данные не корректны!';
+    exit ('Данные не корректны!');
 }

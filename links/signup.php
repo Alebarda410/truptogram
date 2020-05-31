@@ -5,17 +5,17 @@ $pas_l = strlen($_POST['password']);
 if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     exit('Такой Email уже зарегистроирован!');
 } elseif ($email_l > 50 || $pas_l > 50 || ($_POST['rol'] != '0' && $_POST['rol'] != '1')) {
-    exit ('Юзай форму с JS падла!');
+    exit('Выберите роль !');
 } elseif ($_POST['password_2'] != $_POST['password']) {
-    exit ('Пароли не совпадают!');
+    exit('Пароли не совпадают!');
 } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}/', $_POST['password'])) {
-    exit ('Некорректный пароль!');
+    exit('Некорректный пароль!');
 } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    exit ('Некорректный email!');
+    exit('Некорректный email!');
 } elseif (!preg_match('/^[А-Я][а-я]{1,11}$/u', $_POST['name'])) {
-    exit ('Некорректное имя!');
+    exit('Некорректное имя!');
 } else {
-    $token = md5($_POST['email'].time());
+    $token = md5($_POST['email'] . time());
     $user = R::dispense('users');
     $user->name = $_POST['name'];
     $user->email = $_POST['email'];
@@ -29,5 +29,5 @@ if (R::findOne('users', 'email = ?', [$_POST['email']]) > 0) {
     $body .= "?token=$token";
     require 'email_check.php';
     SendMail($_POST['email'], $body);
-    exit ('1');
+    exit('1');
 }

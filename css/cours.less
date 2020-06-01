@@ -11,6 +11,7 @@
     margin: 100px auto;
     margin-top: 50px;
     font-size: 1.2em;
+
     @media screen and (max-width:800px) {
         margin-top: 10px;
     }
@@ -19,6 +20,10 @@
 .ov {
     display: flex;
     flex-direction: row;
+
+    @media screen and (max-width:800px) {
+        flex-direction: column;
+    }
 }
 
 button {
@@ -41,7 +46,7 @@ button {
     margin: 50px;
 
     @media screen and (max-width:800px) {
-        display: none;
+        margin: 15px;
     }
 }
 
@@ -76,7 +81,8 @@ button {
     text-align: justify;
     margin-bottom: 50px;
     padding: 15px;
-    word-wrap:break-word;
+    word-wrap: break-word;
+
     @media screen and (max-width:800px) {
         font-size: 0.8em;
     }

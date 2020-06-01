@@ -23,14 +23,13 @@ $user = $_SESSION['logged_user'];
 <body>
 
     <?php include "HEADER.php"; ?>
-
-    <?php if ($_SESSION['logged_user']->verification == 0) : ?>
-        <div class="text">
-            Для разблокировки полного функционала подтвердите почту!
-        </div>
-    <?php else : ?>
-        <div class="wraper">
-            <div class="cont">
+    <div class="wraper">
+        <div class="cont">
+            <?php if ($_SESSION['logged_user']->verification == 0) : ?>
+                <div class="text">
+                    Для разблокировки полного функционала подтвердите почту!
+                </div>
+            <?php else : ?>
                 <form>
 
                     <label>Текущее имя: <?php echo $user->name; ?></label>
@@ -74,11 +73,12 @@ $user = $_SESSION['logged_user'];
                     <button onclick="del()" class="left_btn">Удалить аккаунт</button>
                     <a href="contact.php#email"><button class="left_btn">Написать администратору</button></a>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
-        <script type="text/javascript" src="libs/jquery.js"></script>
-        <script type="text/javascript" src="js/prof_edit.js"></script>
-    <?php endif; ?>
+    </div>
+    <script type="text/javascript" src="libs/jquery.js"></script>
+    <script type="text/javascript" src="js/prof_edit.js"></script>
+
     <?php include "FOOTER.php"; ?>
 </body>
 

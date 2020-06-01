@@ -79,7 +79,7 @@ $urlHeaders = @get_headers($cours->location);
         <?php if ($_SESSION['logged_user']->verification == 1) : ?>
             <div id="vk_comments"></div>
         <?php else : ?>
-            <div class="da2"> Подтвердите почту чтобы просмотреть или оставить коментарий!</div>
+            <div class="da2"> Войдите и подтвердите почту чтобы просмотреть или оставить коментарий!</div>
         <?php endif;  ?>
     </div>
 

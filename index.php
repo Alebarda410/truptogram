@@ -18,15 +18,14 @@
 <!--
     добить вкладку О нас
     пофиксить запись через левые id на курсы
-    привязать футер
 -->
     <?php include "HEADER.php"; ?>
     <div class="wraper">
         <div class="top_cont">
             <div class="slides">
-                <div class="slide showing"><img width="100%" src="img\sl1.jpg"></div>
-                <div class="slide"><img width="100%" src="img\sl2.jpg"></div>
-                <div class="slide"><img width="100%" src="img\sl3.jpg"></div>
+                <div class="slide showing"><img id="dd" width="100%" src="img\sl1.jpg"></div>
+                <div class="slide"><img id="dd" width="100%" src="img\sl2.jpg"></div>
+                <div class="slide"><img id="dd" width="100%" src="img\sl3.jpg"></div>
             </div>
             <div class="cit">
                 <blockquote>

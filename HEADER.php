@@ -8,7 +8,7 @@
                 <li class="list_item"><a href="/">Главная</a></li>
                 <li class="list_item"><a href="courses.php">Курсы</a></li>
                 <li class="list_item"><a href="contact.php">Контакты</a></li>
-                <li class="list_item"><a href="">О нас</a></li>
+                <li class="list_item"><a href="abaut_us.php">О нас</a></li>
             </ul>
         </nav>
         <div class="header_form">

@@ -15,10 +15,6 @@
 </head>
 
 <body>
-<!--
-    добить вкладку О нас
-    пофиксить запись через левые id на курсы
--->
     <?php include "HEADER.php"; ?>
     <div class="wraper">
         <div class="top_cont">

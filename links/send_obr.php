@@ -16,7 +16,7 @@ if (strlen($_POST['text']) > 10 && strlen($_POST['name']) > 2 && strlen($_POST['
     $mail->setFrom('noreply@truprogram.space', 'truprogram');
     $mail->addAddress('official@truprogram.space');
     $mail->isHTML(true);
-    $mail->Subject = 'Форма обратной связи';
+    $mail->Subject = $_POST['name'];
     $mail->Body = $_POST['text'].' - '.$_POST['email'];
     $mail->send();
     exit ('Письмо отправлено!');
